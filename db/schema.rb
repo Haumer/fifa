@@ -10,21 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180609133447) do
+ActiveRecord::Schema.define(version: 20180609201332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "matches", force: :cascade do |t|
     t.integer "match_id"
-    t.string "home_country"
-    t.string "away_country"
-    t.string "date"
+    t.bigint "away_team_id"
+    t.bigint "home_team_id"
+    t.datetime "date"
     t.string "location"
-    t.string "group"
+    t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "time"
+    t.integer "home_team_goals"
+    t.integer "away_team_goals"
+    t.integer "home_team_yellow_cards"
+    t.integer "away_team_yellow_cards"
+    t.integer "home_team_red_cards"
+    t.integer "away_team_red_cards"
+    t.integer "minutes_played"
+    t.index ["away_team_id"], name: "index_matches_on_away_team_id"
+    t.index ["group_id"], name: "index_matches_on_group_id"
+    t.index ["home_team_id"], name: "index_matches_on_home_team_id"
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.integer "points"
+    t.integer "wins"
+    t.integer "draws"
+    t.integer "losses"
+    t.integer "goals_for"
+    t.integer "goals_against"
+    t.integer "yellow_card"
+    t.integer "red_card"
+    t.bigint "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_teams_on_group_id"
+  end
+
+  add_foreign_key "matches", "groups"
+  add_foreign_key "matches", "teams", column: "away_team_id"
+  add_foreign_key "matches", "teams", column: "home_team_id"
+  add_foreign_key "teams", "groups"
 end
