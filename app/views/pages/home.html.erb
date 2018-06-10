@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <% @groups.each do |group| %>
-      <div class="group col-xs-12 col-sm-3">
+      <div class="group col-xs-12 col-sm-6 col-lg-3">
         <%= link_to group_path(group) do %>
           <div class="group-header">
             <h4><%= group.name %></h4>
@@ -15,10 +15,12 @@
             <th class="data_head">W</th>
             <th class="data_head">D</th>
             <th class="data_head">L</th>
+            <th class="data_head">Pts</th>
           </tr>
           <% group.teams.each do |team| %>
           <tr>
             <td id="first_value"><%= team.name %></td>
+            <td class="data_value">0</td>
             <td class="data_value">0</td>
             <td class="data_value">0</td>
             <td class="data_value">0</td>
@@ -66,6 +68,29 @@
           </script>
         </div>
       </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <% @groups.each do |group| %>
+    <% sorted_matches = group.matches.sort_by { |k| k["date"]} %>
+    <div class="group col-xs-12 col-sm-3">
+      <div class="match-header">
+        <table>
+          <tr>
+            <th id="first_head">Home</th>
+            <th class="data_head">:</th>
+            <th id="last_head">Away</th>
+          </tr>
+        <% sorted_matches.each do |match_data| %>
+        <tr>
+          <td id="first_value"><%= match_data.home_name %></td>
+          <td class="data_value">vs</td>
+          <td id="last_value"><%= match_data.away_name %></td>
+        </tr>
+        <% end %>
+      </table>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>

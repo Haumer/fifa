@@ -31,6 +31,18 @@ h1 {
   border-color: rgb(225,225,225);
 }
 
+#last_head {
+  width:25px;
+  text-align: right;
+}
+
+#last_value {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+  text-align: right;
+}
+
 .data_value {
   text-align: center;
   border-bottom: solid;
@@ -52,4 +64,9 @@ table {
   border-color: rgb(225,225,225);
   margin-bottom: 5px;
   padding-bottom: 8px;
+}
+
+.row-matches {
+  height: 100%;
+  width: 100%;
 }
