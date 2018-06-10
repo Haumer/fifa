@@ -1,10 +1,10 @@
 class TeamsController < ApplicationController
   def index
-    @groups = Group.all
+    @teams = Team.all
   end
 
   def show
-    @group = Group.find(params[:id])
+    @team = Team.find(params[:id])
   end
 
 end

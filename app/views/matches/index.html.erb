@@ -3,16 +3,11 @@
 <% @matches.each do |match| %>
 
   <div>
-    <%= match.home_team_id %> vs <%= match.away_country %>
-    <br>
-    <%= match.date %> <%= match.time %>
-    <br>
-    <%= match.group %>
-    <br>
-    <%= match.location %>
-    <br>
+    <%= match.home_name %> vs <%= match.away_name%>
+    <%= match.date_string %>
     <br>
   </div>
+
 
 <% end %>
 
