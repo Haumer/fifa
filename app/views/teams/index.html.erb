@@ -1,6 +1,8 @@
 <h1>Teams</h1>
 <% @teams.each do |team| %>
+  <%= link_to team_path(team) do %>
   <%= team.name %>
+  <% end %>
   <br>
 <% end %>
-<%= link_to "home", root_path %>
+<%= link_to "Home", root_path %>
