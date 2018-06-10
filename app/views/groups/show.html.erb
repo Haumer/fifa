@@ -1,7 +1,13 @@
-<h1><%= @group.name %></h1>
-<% @group.teams.each do |team| %>
-  <%= team.name %>
-  <br>
-<% end %>
+
+<div class="container">
+  <h1><%= @group.name %></h1>
+  <% @group.teams.each do |team| %>
+  <div class="group-show">
+    <h4><%= team.name %></h4>
+    <br>
+  </div>
+  <% end %>
+</div>
+
 <%= link_to "Back", groups_path(@groups) %>
 <%= link_to "Home", root_path %>

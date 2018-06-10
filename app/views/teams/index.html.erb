@@ -1,8 +1,12 @@
 <h1>Teams</h1>
-<% @teams.each do |team| %>
-  <%= link_to team_path(team) do %>
-  <%= team.name %>
+<div class="container">
+  <% @teams.each do |team| %>
+    <div class="team">
+      <%= link_to team_path(team) do %>
+      <h4><%= team.name %></h4>
+      <% end %>
+      <br>
+    </div>
   <% end %>
-  <br>
-<% end %>
+</div>
 <%= link_to "Home", root_path %>

@@ -1,16 +1,20 @@
 <h1>Matches</h1>
 
-<% @matches.each do |match_unit| %>
-  <div>
-    <%= link_to match_path(match_unit) do %>
-      <%= match_unit.home_name %> vs <%= match_unit.away_name%>
-    <% end %>
-    <%= match_unit.date_string %>
-    <br>
-    <%= match_unit.location %>
-    <br>
-  </div>
-<% end %>
+<div class="container">
+  <% sorted_matches = @matches.sort_by { |k| k["date"]} %>
+  <% sorted_matches.each do |match_unit| %>
+    <div class="match">
+      <%= link_to match_path(match_unit) do %>
+        <%= match_unit.home_name %> vs <%= match_unit.away_name%>
+      <% end %>
+      <%= match_unit.date_string %>
+      <br>
+      <%= match_unit.location %>
+      <br>
+    </div>
+  <% end %>
+</div>
+
 <%= link_to "Home", root_path %>
 
 
