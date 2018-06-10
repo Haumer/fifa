@@ -22,6 +22,10 @@ require 'date'
 Group.all.each do |g|
   g.destroy
 end
+Team.all.each do |g|
+  g.destroy
+end
+
 root = "http://livescore-api.com/api-client"
 groupstage = "/fixtures/matches.json?key=SCirnjwD8XyuMaIa&secret=UAdcfax0rRiY1nGUZYmniT0qQyVCJEND&league="
 groups_id = { 793 => "Group A", 794 => "Group B", 795 => "Group C", 796 => "Group D", 797 => "Group E", 798 => "Group F", 799 => "Group G", 800 => "Group H" }
@@ -36,13 +40,14 @@ groups_id.each do |key, value|
   response = open(url)
   response_body = response.read
   json = JSON.parse(response_body)
+  puts json["data"]["fixtures"]
 
   json["data"]["fixtures"].each do |fixture|
     begin
       Team.create(id: fixture["home_id"], name: fixture["home_name"], group_id: fixture["league_id"])
-    rescue ActiveRecord::InvalidForeignKey
+    rescue ActiveRecord::RecordNotUnique
       puts "I get here"
-    rescue PG::ForeignKeyViolation
+    rescue PG::UniqueViolation
       puts "bugger"
     end
   end
