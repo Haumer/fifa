@@ -4,7 +4,9 @@
   <h4><%= group.name %></h2>
 <% end %>
   <% group.teams.each do |team| %>
-    <%= team.name %>
+    <%= link_to team_path(team) do %>
+      <h3><%= team.name %></h3>
+    <% end %>
     <br>
   <% end %>
   <br>

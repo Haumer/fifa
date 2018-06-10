@@ -60,15 +60,14 @@ end
 puts "adding flags"
 
 data_store.each do |fixture|
-  p fixture
   f = Match.where("home_name = ? and away_name = ?", fixture["home_team"]["name"]["full"], fixture["visitant_team"]["name"]["full"]).first
-  p f
   f.date = fixture["start_time"]
-  p f.date
+  puts f.date
+  f.save
   team = Team.where(name: fixture["home_team"]["name"]["full"]).first
   team.photo = fixture["home_team"]["name"]["flag"]
-  puts "flag added"
-
+  puts team.photo
+  team.save
 end
 
 
