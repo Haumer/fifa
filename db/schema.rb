@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20180609201332) do
     t.integer "goals_against"
     t.integer "yellow_card"
     t.integer "red_card"
+    t.string "photo"
     t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
