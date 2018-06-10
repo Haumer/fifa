@@ -1,11 +1,55 @@
 // Specific CSS for your home-page
+
+//Page#home title centered
+h1 {
+  text-align: center;
+}
+
 .group-header {
   width: 100%;
 }
-.team-row {
 
+// Next Match Font Size
+.next_match {
+  font-size: 13px;
 }
 
-.next_match {
-  font-size: 16px;
+// Group table CSS
+.data_head {
+  width:25px;
+  text-align: center;
+}
+
+#first_head {
+  margin-right: 2px;
+  width: 45px;
+}
+
+#first_value {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+.data_value {
+  text-align: center;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+table {
+  width: 100%;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: rgb(225,225,225);
+}
+
+//Row border-bottom to separate
+.row {
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: rgb(225,225,225);
+  margin-bottom: 5px;
+  padding-bottom: 8px;
 }

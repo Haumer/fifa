@@ -1,4 +1,4 @@
-<h1>Pages#home</h1>
+<h1>2018 FIFA World Cup</h1>
 
 <div class="container">
   <div class="row">
@@ -9,14 +9,25 @@
             <h4><%= group.name %></h4>
           </div>
         <% end %>
+        <table>
+          <tr>
+            <th id="first_head">Country</th>
+            <th class="data_head">W</th>
+            <th class="data_head">D</th>
+            <th class="data_head">L</th>
+          </tr>
+          <% group.teams.each do |team| %>
+          <tr>
+            <td id="first_value"><%= team.name %></td>
+            <td class="data_value">1</td>
+            <td class="data_value">0</td>
+            <td class="data_value">0</td>
+          </tr>
+          <% end %>
+        </table>
 
-        <% group.teams.each do |team| %>
-          <div class="team-row">
-            <%= team.name %>
-          </div>
-        <% end %>
         <div class="next_match">
-          <span>Next Match <%= group.matches.first.home_name %> vs <%= group.matches.first.away_name %></span>
+          <span>Next Match: <%= group.matches.first.home_name %> vs <%= group.matches.first.away_name %></span>
           <br>
           <span>In: </span> <span class="countdown"><%= group.matches.first.date %></span>
           <script>
