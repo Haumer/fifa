@@ -10,6 +10,7 @@ class CreateTeams < ActiveRecord::Migration[5.1]
       t.integer :goals_against
       t.integer :yellow_card
       t.integer :red_card
+      t.string :photo
       t.references :group, foreign_key: true
       t.timestamps
     end
