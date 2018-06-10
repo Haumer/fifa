@@ -1,5 +1,2 @@
 class Match < ApplicationRecord
-
-
-
 end

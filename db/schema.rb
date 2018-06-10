@@ -28,16 +28,20 @@ ActiveRecord::Schema.define(version: 20180609201332) do
     t.datetime "date"
     t.string "location"
     t.bigint "group_id"
+    t.string "home_name"
+    t.string "away_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "time"
-    t.integer "home_team_goals"
-    t.integer "away_team_goals"
-    t.integer "home_team_yellow_cards"
-    t.integer "away_team_yellow_cards"
-    t.integer "home_team_red_cards"
-    t.integer "away_team_red_cards"
-    t.integer "minutes_played"
+    t.string "date_string"
+    t.string "round"
+    t.integer "home_team_goals", default: 0
+    t.integer "away_team_goals", default: 0
+    t.integer "home_team_yellow_cards", default: 0
+    t.integer "away_team_yellow_cards", default: 0
+    t.integer "home_team_red_cards", default: 0
+    t.integer "away_team_red_cards", default: 0
+    t.integer "minutes_played", default: 0
     t.index ["away_team_id"], name: "index_matches_on_away_team_id"
     t.index ["group_id"], name: "index_matches_on_group_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"

@@ -25,6 +25,9 @@ end
 Team.all.each do |g|
   g.destroy
 end
+Match.all.each do |g|
+  g.destroy
+end
 
 root = "http://livescore-api.com/api-client"
 groupstage = "/fixtures/matches.json?key=SCirnjwD8XyuMaIa&secret=UAdcfax0rRiY1nGUZYmniT0qQyVCJEND&league="
@@ -34,7 +37,7 @@ groups_id.each do |id, name |
   created = Group.create(id: id, name: name)
   puts created
 end
-
+stadiums = { "Luzhniki Stadium, Moscow" => 2, "Spartak Stadium, Moscow" => 2, "Nizhny Novgorod Stadium, Nizhny Novgorod" => 2, "Mordovia Arena, Saransk" => 2, "Kazan Arena, Kazan" => 2, "Samara Arena, Samara" => 3, "Ekaterinburg Arena, Ekaterinburg" => 4, "St Petersburg Stadium, St Petersburg" => 2, "Kaliningrad Stadium, Kaliningrad" => 1, "Volgograd Arena, Volgograd" => 2, "Rostov Arena, Rostov-on-Don" => 2, "Fisht Stadium, Sochi" => 2 }
 groups_id.each do |key, value|
   url = root + groupstage + key.to_s
   response = open(url)
@@ -45,12 +48,27 @@ groups_id.each do |key, value|
   json["data"]["fixtures"].each do |fixture|
     begin
       Team.create(id: fixture["home_id"], name: fixture["home_name"], group_id: fixture["league_id"])
+      puts "team created"
     rescue ActiveRecord::RecordNotUnique
       puts "I get here"
     rescue PG::UniqueViolation
       puts "bugger"
     end
   end
+  json["data"]["fixtures"].each do |fixture|
+    Match.create(id: fixture["id"],
+      date_string: fixture["date"],
+      time: fixture["time"],
+      round: fixture["round"],
+      home_name: fixture["home_name"],
+      away_name: fixture["away_name"],
+      location: fixture["location"],
+      group_id: fixture["league_id"],
+      away_team_id: fixture["away_id"],
+      home_team_id: fixture["home_id"])
+    puts "match created"
+  end
+
 end
 
 
