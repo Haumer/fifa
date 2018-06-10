@@ -1,14 +1,16 @@
 <h1>Matches</h1>
 
-<% @matches.each do |match| %>
-
+<% @matches.each do |match_unit| %>
   <div>
-    <%= match.home_name %> vs <%= match.away_name%>
-    <%= match.date_string %>
+    <%= link_to match_path(match_unit) do %>
+      <%= match_unit.home_name %> vs <%= match_unit.away_name%>
+    <% end %>
+    <%= match_unit.date_string %>
+    <br>
+    <%= match_unit.location %>
     <br>
   </div>
-
-
 <% end %>
+<%= link_to "home", root_path %>
 
 

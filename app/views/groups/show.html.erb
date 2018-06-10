@@ -1,0 +1,8 @@
+<h1><%= @group.name %></h1>
+<% @group.teams.each do |team| %>
+
+  <%= team.name %>
+  <br>
+<% end %>
+<%= link_to "Back", groups_path(@groups) %>
+<%= link_to "home", root_path %>
