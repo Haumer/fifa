@@ -11,6 +11,39 @@
       <br>
       <%= match_unit.location %>
       <br>
+      <span id="countdown" class="countdown"><%= match_unit.date %></span>
+      <script>
+      // Set the date we're counting down to
+      let countDownDate = new Date(document.querySelectorAll("countdown").innerHTML).getTime();
+
+      // Update the count down every 1 second
+      let x = setInterval(function() {
+
+        // Get todays date and time
+        let now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        let distance = countDownDate[1] - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "LIVE";
+        } else if (distance < 9000) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "Finished";
+        }
+      }, 1000);
+      </script>
     </div>
   <% end %>
 </div>
