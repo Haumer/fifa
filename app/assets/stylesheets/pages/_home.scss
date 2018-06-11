@@ -14,7 +14,7 @@ h1 {
   font-size: 13px;
 }
 
-// Group table CSS
+// Group table CSS home page
 .data_head {
   width:25px;
   text-align: center;
@@ -29,6 +29,7 @@ h1 {
   border-bottom: solid;
   border-width: 1px;
   border-color: rgb(225,225,225);
+  width: 127px;
 }
 
 #last_head {
@@ -43,7 +44,27 @@ h1 {
   text-align: right;
 }
 
+#match_last_value {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+  text-align: right;
+}
+
+#match_first_value {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
 .data_value {
+  text-align: center;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+.match_data_value {
   text-align: center;
   border-bottom: solid;
   border-width: 1px;
@@ -62,9 +83,10 @@ h1 {
   border-bottom: solid;
   border-width: 2px;
   border-color: rgb(225,225,225);
+  margin-bottom: 15px;
 }
 
-//Row border-bottom to separate
+//Row border-bottom to separate home page
 .row {
   border-bottom: solid;
   border-width: 2px;
@@ -81,17 +103,17 @@ h1 {
 //match show page
 
 .goals {
-  // display: flex;
-  // justify-content: space-between;
   width: 100%;
 }
 
 .home_team_name {
   text-align: left;
+  font-size: 25px;
 }
 
 .away_team_name {
   text-align: right;
+  font-size: 25px;
 }
 
 .show_match {
@@ -109,6 +131,7 @@ h1 {
 
 .show_data_value {
   text-align: center;
+  font-size: 25px;
 }
 
 .show_next_match {
@@ -123,3 +146,5 @@ h1 {
   border-width: 2px;
   border-color: rgb(225,225,225);
 }
+
+

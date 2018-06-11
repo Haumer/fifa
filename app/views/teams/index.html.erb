@@ -1,12 +1,38 @@
 <h1>Teams</h1>
 <div class="container">
-  <% @teams.each do |team| %>
     <div class="team">
-      <%= link_to team_path(team) do %>
-      <h4><%= team.name %></h4>
-      <% end %>
+
+      <table>
+        <tr>
+          <th>Country</th>
+          <th>Wins</th>
+          <th>Draws</th>
+          <th>Losses</th>
+          <th>Goals For</th>
+          <th>Goals Against</th>
+          <th>Goal Diff</th>
+          <th>Yellow Cards</th>
+          <th>Red Cards</th>
+        </tr>
+        <% @teams.each do |team| %>
+        <tr>
+          <td>
+          <%= link_to team_path(team) do %>
+            <h4><%= team.name %></h4>
+          <% end %>
+          </td>
+          <td><%= team.wins %></td>
+          <td><%= team.draws %></td>
+          <td><%= team.losses %></td>
+          <td><%= team.goals_for %></td>
+          <td><%= team.goals_against %></td>
+          <td><%= team.goals_for - team.goals_against %></td>
+          <td><%= team.yellow_card %></td>
+          <td><%= team.red_card %></td>
+        </tr>
+  <% end %>
+      </table>
       <br>
     </div>
-  <% end %>
 </div>
 <%= link_to "Home", root_path %>

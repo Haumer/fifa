@@ -3,12 +3,13 @@
 <div class="container">
   <div class="goals">
     <div class="show_location">
-      <%= @match.location %>
+      <span class="show_data_value"><%= @match.location %></span>
     </div>
     <table class="show_match">
       <tr>
         <td class="show_team_value first_value home_team_name"><%= @match.home_name %></td>
         <td class="show_data_value home_team_goals"><%= @match.home_team_goals %></td>
+        <td class="show_data_value">:</td>
         <td class="show_data_value away_team_goals"><%= @match.away_team_goals %></td>
         <td class="show_team_value last_value away_team_name"><%= @match.away_name %></td>
       </tr>
