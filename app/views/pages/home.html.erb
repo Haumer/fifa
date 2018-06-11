@@ -30,9 +30,19 @@
         </table>
 
         <div class="next_match">
+
           <span>Next Match: <%= group.matches.first.home_name %> vs <%= group.matches.first.away_name %></span>
           <br>
-          <span>In: </span> <span class="countdown"><%= group.matches.first.date %></span>
+          <span>In: </span> <span class="countdown">
+            <% array = [] %>
+            <% group.matches.each_with_index do |match_data, index| %>
+              <% if DateTime.now > match_data.date %>
+              <% elsif DateTime.now < match_data.date %>
+              <% array << group.matches[index].date %>
+              <% end %>
+            <% end %>
+            <%= array.first %>
+          </span>
           <script>
           // Set the date we're counting down to
           var countdown_divs = document.querySelectorAll(".countdown")
