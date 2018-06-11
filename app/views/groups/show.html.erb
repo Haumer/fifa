@@ -1,12 +1,23 @@
 
 <div class="container">
-  <h1><%= @group.name %></h1>
-  <% @group.teams.each do |team| %>
-  <div class="group-show">
-    <h4><%= team.name %></h4>
-    <br>
-  </div>
-  <% end %>
+        <table class="home_groups">
+          <tr>
+            <th id="first_head">Country</th>
+            <th class="data_head">W</th>
+            <th class="data_head">D</th>
+            <th class="data_head">L</th>
+            <th class="data_head">Pts</th>
+          </tr>
+          <% @group.teams.each do |team| %>
+          <tr>
+            <td id="first_value"><%= team.name %></td>
+            <td class="data_value"><%= team.wins %></td>
+            <td class="data_value"><%= team.draws %></td>
+            <td class="data_value"><%= team.losses %></td>
+            <td class="data_value"><%= team.points %></td>
+          </tr>
+          <% end %>
+        </table>
 </div>
 
 <%= link_to "Back", groups_path(@groups) %>
