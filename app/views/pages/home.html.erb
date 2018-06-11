@@ -9,7 +9,7 @@
             <h4><%= group.name %></h4>
           </div>
         <% end %>
-        <table>
+        <table class="home_groups">
           <tr>
             <th id="first_head">Country</th>
             <th class="data_head">W</th>
@@ -20,10 +20,10 @@
           <% group.teams.each do |team| %>
           <tr>
             <td id="first_value"><%= team.name %></td>
-            <td class="data_value">0</td>
-            <td class="data_value">0</td>
-            <td class="data_value">0</td>
-            <td class="data_value">0</td>
+            <td class="data_value"><%= team.wins %></td>
+            <td class="data_value"><%= team.draws %></td>
+            <td class="data_value"><%= team.losses %></td>
+            <td class="data_value"><%= team.points %></td>
           </tr>
           <% end %>
         </table>
@@ -75,11 +75,11 @@
     <% sorted_matches = group.matches.sort_by { |k| k["date"]} %>
     <div class="group col-xs-12 col-sm-3">
       <div class="match-header">
-        <table>
+        <table class="home_matches">
           <tr>
-            <th id="first_head">Home</th>
-            <th class="data_head">:</th>
-            <th id="last_head">Away</th>
+            <th id="first_head"><%= group.name %></th>
+            <th class="data_head"></th>
+            <th id="last_head">Matches</th>
           </tr>
         <% sorted_matches.each do |match_data| %>
         <tr>

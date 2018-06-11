@@ -2,14 +2,14 @@ class CreateTeams < ActiveRecord::Migration[5.1]
   def change
     create_table :teams do |t|
       t.string :name
-      t.integer :points
-      t.integer :wins
-      t.integer :draws
-      t.integer :losses
-      t.integer :goals_for
-      t.integer :goals_against
-      t.integer :yellow_card
-      t.integer :red_card
+      t.integer :points, :integer, default: 0
+      t.integer :wins, :integer, default: 0
+      t.integer :draws, :integer, default: 0
+      t.integer :losses, :integer, default: 0
+      t.integer :goals_for, :integer, default: 0
+      t.integer :goals_against, :integer, default: 0
+      t.integer :yellow_card, :integer, default: 0
+      t.integer :red_card, :integer, default: 0
       t.string :photo
       t.references :group, foreign_key: true
       t.timestamps

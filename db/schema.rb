@@ -7,6 +7,7 @@
 # system, you should be using db:schema:load, not running all the migrations
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
+#
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20180609201332) do
@@ -48,14 +49,15 @@ ActiveRecord::Schema.define(version: 20180609201332) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
-    t.integer "points"
-    t.integer "wins"
-    t.integer "draws"
-    t.integer "losses"
-    t.integer "goals_for"
-    t.integer "goals_against"
-    t.integer "yellow_card"
-    t.integer "red_card"
+    t.integer "points", default: 0
+    t.integer "integer", default: 0
+    t.integer "wins", default: 0
+    t.integer "draws", default: 0
+    t.integer "losses", default: 0
+    t.integer "goals_for", default: 0
+    t.integer "goals_against", default: 0
+    t.integer "yellow_card", default: 0
+    t.integer "red_card", default: 0
     t.string "photo"
     t.bigint "group_id"
     t.datetime "created_at", null: false

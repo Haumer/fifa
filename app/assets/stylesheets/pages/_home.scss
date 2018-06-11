@@ -50,7 +50,14 @@ h1 {
   border-color: rgb(225,225,225);
 }
 
-table {
+.home_groups {
+  width: 100%;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: rgb(225,225,225);
+}
+
+.home_matches {
   width: 100%;
   border-bottom: solid;
   border-width: 2px;
@@ -69,4 +76,50 @@ table {
 .row-matches {
   height: 100%;
   width: 100%;
+}
+
+//match show page
+
+.goals {
+  // display: flex;
+  // justify-content: space-between;
+  width: 100%;
+}
+
+.home_team_name {
+  text-align: left;
+}
+
+.away_team_name {
+  text-align: right;
+}
+
+.show_match {
+  width: 100%;
+}
+
+.show_team_value {
+  width: 40%;
+}
+
+.show_location {
+  width: 100%;
+  text-align: center;
+}
+
+.show_data_value {
+  text-align: center;
+}
+
+.show_next_match {
+  font-size: 25px;
+  text-align: center;
+}
+
+// match show page
+
+.match {
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: rgb(225,225,225);
 }
