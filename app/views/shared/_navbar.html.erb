@@ -1,0 +1,30 @@
+<script>
+  function clock() {
+  var time = new Date(),
+      hours = time.getHours(),
+      minutes = time.getMinutes(),
+      seconds = time.getSeconds();
+  document.querySelectorAll('.date_time_now')[0].innerHTML = zeroes(hours) + ":" + zeroes(minutes) + ":" + zeroes(seconds);
+    function zeroes(standIn) {
+      if (standIn < 10) {
+        standIn = '0' + standIn
+      }
+      return standIn;
+    }
+  }
+  setInterval(clock, 1000);
+</script>
+<div class="navbar navbar-fixed-top">
+  <div class="home_button">
+    <%= link_to root_path do %>
+       <%= image_tag "logo.png", :class => "navbar_logo" %>
+    <% end %>
+  </div>
+  <div class="upcoming_match">
+
+  </div>
+  <div class="date_time">
+    <span class="date_time_now"></span>
+  </div>
+</div>
+
