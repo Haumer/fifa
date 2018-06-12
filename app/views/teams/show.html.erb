@@ -1,28 +1,28 @@
 <img src=<%= @team.photo %> alt="">
   <table class="home_groups">
     <tr>
-      <th id="first_head">Country</th>
-      <th class="data_head">W</th>
-      <th class="data_head">D</th>
-      <th class="data_head">L</th>
-      <th class="data_head">Pts</th>
-      <th class="data_head">Goals For</th>
-      <th class="data_head">Goals Against</th>
-      <th class="data_head">Goal Diff</th>
-      <th class="data_head">Yellow Cards</th>
-      <th class="data_head">Red Cards</th>
+      <th id="team_first_head">Country</th>
+      <th class="team_data_head">W</th>
+      <th class="team_data_head">D</th>
+      <th class="team_data_head">L</th>
+      <th class="team_data_head">Pts</th>
+      <th class="team_data_head">GF</th>
+      <th class="team_data_head">GA</th>
+      <th class="team_data_head">GD</th>
+      <th class="team_data_head">YC</th>
+      <th class="team_data_head">RC</th>
     </tr>
     <tr>
-      <td id="first_value"><%= @team.name %></td>
-      <td class="data_value"><%= @team.wins %></td>
-      <td class="data_value"><%= @team.draws %></td>
-      <td class="data_value"><%= @team.losses %></td>
-      <td class="data_value"><%= @team.points %></td>
-      <td class="data_value"><%= @team.goals_for %></td>
-      <td class="data_value"><%= @team.goals_against %></td>
-      <td class="data_value"><%= @team.goals_for - @team.goals_against %></td>
-      <td class="data_value"><%= @team.yellow_card %></td>
-      <td class="data_value"><%= @team.red_card %></td>
+      <td id="team_first_value"><%= @team.name %></td>
+      <td class="team_data_value"><%= @team.wins %></td>
+      <td class="team_data_value"><%= @team.draws %></td>
+      <td class="team_data_value"><%= @team.losses %></td>
+      <td class="team_data_value"><%= @team.points %></td>
+      <td class="team_data_value"><%= @team.goals_for %></td>
+      <td class="team_data_value"><%= @team.goals_against %></td>
+      <td class="team_data_value"><%= @team.goals_for - @team.goals_against %></td>
+      <td class="team_data_value"><%= @team.yellow_card %></td>
+      <td class="team_data_value"><%= @team.red_card %></td>
     </tr>
   </table>
 <%= link_to "All Teams", teams_path(@teams) %>

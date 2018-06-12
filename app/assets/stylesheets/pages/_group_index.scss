@@ -1,0 +1,76 @@
+// First th
+.group_flag_head {
+ width: 10%
+}
+// First th after flag
+#group_first_data_head {
+  margin-right: 2px;
+  width: 45px;
+}
+// th
+.group_data_head {
+  width:25px;
+  text-align: center;
+}
+
+// First td
+.group_flag_data img {
+  height: 45px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  margin: 2px 3px 2px 0px;
+}
+
+.group_flag_data {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+// First td after flag
+#group_first_data_value {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+  width: 127px;
+}
+
+#group_first_value {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+  width: 127px;
+}
+
+#match_first_value {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+#match_last_value {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+  text-align: right;
+}
+
+.group_data_value {
+  text-align: center;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+.match_data_value {
+  text-align: center;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+// Next Match
+.group_next_match {
+  margin-left: 90px;
+  font-size: 13px;
+}

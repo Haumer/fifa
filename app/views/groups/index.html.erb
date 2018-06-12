@@ -10,24 +10,26 @@
         <% end %>
         <table class="home_groups">
           <tr>
-            <th id="first_head">Country</th>
-            <th class="data_head">W</th>
-            <th class="data_head">D</th>
-            <th class="data_head">L</th>
-            <th class="data_head">Pts</th>
+            <th class="group_flag_head"></th>
+            <th id="group_first_data_head">Country</th>
+            <th class="group_data_head">W</th>
+            <th class="group_data_head">D</th>
+            <th class="group_data_head">L</th>
+            <th class="group_data_head">Pts</th>
           </tr>
           <% group.teams.each do |team| %>
           <tr>
-            <td id="first_value"><%= team.name %></td>
-            <td class="data_value">0</td>
-            <td class="data_value">0</td>
-            <td class="data_value">0</td>
-            <td class="data_value">0</td>
+            <td class="group_flag_data"><img src="<%= team.photo %>" alt=""></td>
+            <td id="group_first_data_value"><%= team.name %></td>
+            <td class="group_data_value"><%= team.wins %></td>
+            <td class="group_data_value"><%= team.draws %></td>
+            <td class="group_data_value"><%= team.losses %></td>
+            <td class="group_data_value"><%= team.points %></td>
           </tr>
           <% end %>
         </table>
 
-        <div class="next_match">
+        <div class="group_next_match">
           <span>Next Match: <%= group.matches.first.home_name %> vs <%= group.matches.first.away_name %></span>
           <br>
           <span>In: </span> <span class="countdown"><%= group.matches.first.date %></span>

@@ -1,3 +1,11 @@
 // Import page-specific CSS files here.
 @import "home";
-@import "matches_index"
+//TEAM
+@import "team_show";
+@import "team_index";
+//MATCH
+@import "match_index";
+@import "match_show";
+// GROUP
+@import "group_index";
+@import "group_show";

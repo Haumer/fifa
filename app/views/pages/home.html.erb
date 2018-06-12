@@ -19,7 +19,7 @@
             <th class="data_head">Pts</th>
           </tr>
           <% group.teams.each do |team| %>
-          <tr>
+          <tr class="home_groups_row">
             <td class="flag_data"><img src=<%= team.photo %> alt=""></td>
             <td id="first_value"><%= team.name %></td>
             <td class="data_value"><%= team.wins %></td>
@@ -91,12 +91,12 @@
       <div class="match-header">
         <table class="home_matches">
           <tr>
-            <th id="first_head"><%= group.name %></th>
-            <th class="data_head"></th>
-            <th id="last_head">Matches</th>
+            <th id="match_first_head"><%= group.name %></th>
+            <th class="match_data_head"></th>
+            <th id="match_last_head">Matches</th>
           </tr>
         <% sorted_matches.each do |match_data| %>
-        <tr>
+        <tr class="home_match_row">
           <td id="match_first_value"><%= match_data.home_name %></td>
           <td class="match_data_value">vs</td>
           <td id="match_last_value"><%= match_data.away_name %></td>

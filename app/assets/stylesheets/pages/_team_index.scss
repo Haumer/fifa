@@ -1,0 +1,53 @@
+.team {
+  width: 100%
+}
+
+// .first_team_header corresponds to the first TWO th, which .first_team_data + .team_flag are the first TWO td
+.first_team_data {
+  width: 11%;
+  text-align: left;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+.first_team_header {
+  width: 11%;
+  text-align: left;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+// .team_data and .team_header correspond to each other
+.team_data {
+  width: 8.9%;
+  text-align: center;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+.team_header {
+  width: 8.9%;
+  text-align: center;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+// .team_flag is the first td
+.team_flag img {
+  height: 40px;
+  margin-right: 5px;
+}
+
+.team_flag {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+.teams_table {
+  width: 100%;
+}

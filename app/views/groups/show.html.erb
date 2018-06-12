@@ -3,19 +3,21 @@
   <h2><%= @group.name %></h2>
   <table class="home_groups">
     <tr>
+      <th class="group_flag_head"></th>
       <th id="first_head">Country</th>
       <th class="data_head">W</th>
       <th class="data_head">D</th>
       <th class="data_head">L</th>
       <th class="data_head">Pts</th>
-      <th class="data_head">Goals For</th>
-      <th class="data_head">Goals Against</th>
-      <th class="data_head">Goal Diff</th>
-      <th class="data_head">Yellow Cards</th>
-      <th class="data_head">Red Cards</th>
+      <th class="data_head">GF</th>
+      <th class="data_head">GA</th>
+      <th class="data_head">GD</th>
+      <th class="data_head">YC</th>
+      <th class="data_head">RC</th>
     </tr>
     <% @group.teams.each do |team| %>
     <tr>
+      <td class="group_flag_data"><img src="<%= team.photo %>" alt=""></td>
       <td id="first_value"><%= team.name %></td>
       <td class="data_value"><%= team.wins %></td>
       <td class="data_value"><%= team.draws %></td>

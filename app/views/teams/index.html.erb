@@ -1,14 +1,14 @@
 <h1>Teams</h1>
 <div class="container">
     <div class="team">
-
-      <table>
+      <table class="teams_table">
         <tr>
           <th class="first_team_header"></th>
           <th class="first_team_header">Country</th>
           <th class="team_header">W</th>
           <th class="team_header">D</th>
           <th class="team_header">L</th>
+          <th class="team_header">Pts</th>
           <th class="team_header">GF</th>
           <th class="team_header">GA</th>
           <th class="team_header">GD</th>
@@ -27,6 +27,7 @@
           <td class="team_data"><%= team.wins %></td>
           <td class="team_data"><%= team.draws %></td>
           <td class="team_data"><%= team.losses %></td>
+          <td class="team_data"><%= team.points %></td>
           <td class="team_data"><%= team.goals_for %></td>
           <td class="team_data"><%= team.goals_against %></td>
           <td class="team_data"><%= team.goals_for - team.goals_against %></td>

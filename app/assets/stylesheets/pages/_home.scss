@@ -11,20 +11,39 @@ h1 {
 
 // Next Match Font Size
 .next_match {
-  font-size: 13px;
+  font-size: 14px;
+  margin-left: 30px
 }
 
-// Group table CSS home page
+// Group table on home page
+// First th
+.flag {
+
+}
+
+// First th after flag
+#first_head {
+  width: 45px;
+}
+
+// All except first th
 .data_head {
   width:25px;
   text-align: center;
 }
 
-#first_head {
-  margin-right: 2px;
-  width: 45px;
+// Last th
+#last_head {
+  width:25px;
+  text-align: right;
 }
 
+// First td
+.flag_data img {
+  height: 15px;
+}
+
+// First td after flag
 #first_value {
   border-bottom: solid;
   border-width: 1px;
@@ -32,31 +51,7 @@ h1 {
   width: 127px;
 }
 
-#last_head {
-  width:25px;
-  text-align: right;
-}
-
-#last_value {
-  border-bottom: solid;
-  border-width: 1px;
-  border-color: rgb(225,225,225);
-  text-align: right;
-}
-
-#match_last_value {
-  border-bottom: solid;
-  border-width: 1px;
-  border-color: rgb(225,225,225);
-  text-align: right;
-}
-
-#match_first_value {
-  border-bottom: solid;
-  border-width: 1px;
-  border-color: rgb(225,225,225);
-}
-
+// middle td
 .data_value {
   text-align: center;
   border-bottom: solid;
@@ -64,13 +59,56 @@ h1 {
   border-color: rgb(225,225,225);
 }
 
+// Last td
+#last_value {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+  text-align: right;
+}
+
+// Group match on home page
+// First th
+#match_first_head {
+  margin-right: 2px;
+  width: 45px;
+}
+
+// Middle th
+.match_data_head {
+  width:25px;
+  text-align: center;
+}
+
+// Last th
+#match_last_head {
+  width:25px;
+  text-align: right;
+}
+// First td
+#match_first_value {
+  width: 45%;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+//Middle td
 .match_data_value {
   text-align: center;
   border-bottom: solid;
   border-width: 1px;
   border-color: rgb(225,225,225);
 }
+//Last td
+#match_last_value {
+  width: 45%;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+  text-align: right;
+}
 
+// Home Table
 .home_groups {
   width: 100%;
   border-bottom: solid;
@@ -78,16 +116,13 @@ h1 {
   border-color: rgb(225,225,225);
 }
 
+// Matches Table
 .home_matches {
   width: 100%;
   border-bottom: solid;
   border-width: 2px;
   border-color: rgb(225,225,225);
   margin-bottom: 15px;
-}
-
-.flag_data img {
-  height: 15px;
 }
 
 //Row border-bottom to separate home page
@@ -104,98 +139,13 @@ h1 {
   width: 100%;
 }
 
-//match show page
-
-.goals {
-  width: 100%;
+.home_groups_row {
+  font-size: 14px;
 }
 
-.home_team_name {
-  text-align: left;
-  font-size: 25px;
+.home_match_row {
+  font-size: 14px;
 }
-
-.away_team_name {
-  text-align: right;
-  font-size: 25px;
-}
-
-.show_match {
-  width: 100%;
-}
-
-.show_team_value {
-  width: 40%;
-}
-
-.show_location {
-  width: 100%;
-  text-align: center;
-}
-
-.show_data_value {
-  text-align: center;
-  font-size: 25px;
-}
-
-.show_next_match {
-  font-size: 25px;
-  text-align: center;
-}
-
-// match show page
-
-.match {
-  border-bottom: solid;
-  border-width: 2px;
-  border-color: rgb(225,225,225);
-}
-
-
-// teams index page
-.team_header {
-  width: 11%;
-  text-align: center;
-  border-bottom: solid;
-  border-width: 1px;
-  border-color: rgb(225,225,225);
-}
-
-.first_team_data {
-  width: 11%;
-  text-align: left;
-  border-bottom: solid;
-  border-width: 1px;
-  border-color: rgb(225,225,225);
-}
-
-.team_data {
-  width: 11%;
-  border-bottom: solid;
-  border-width: 1px;
-  border-color: rgb(225,225,225);
-}
-
-.team_flag img {
-  height: 40px;
-  margin-right: 5px;
-
-}
-
-.team_flag {
-  border-bottom: solid;
-  border-width: 1px;
-  border-color: rgb(225,225,225);
-}
-
-.first_team_header {
-  width: 11%;
-  text-align: left;
-  border-bottom: solid;
-  border-width: 1px;
-  border-color: rgb(225,225,225);
-}
-
 
 
 
