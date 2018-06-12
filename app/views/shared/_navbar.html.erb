@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   function clock() {
   var time = new Date(),
       hours = time.getHours(),
@@ -13,17 +13,20 @@
     }
   }
   setInterval(clock, 1000);
-</script>
+</script> -->
 <div class="navbar navbar-fixed-top">
-  <div class="home_button">
+  <div class="spacing home_button">
     <%= link_to root_path do %>
        <%= image_tag "logo.png", :class => "navbar_logo" %>
     <% end %>
   </div>
-  <div class="upcoming_match">
-
+  <div class="spacing navbar-links">
+    <%= link_to "Home", root_path %>
+    <%= link_to "Matches", matches_path(@matches) %>
+    <%= link_to "Groups", groups_path(@groups) %>
+    <%= link_to "Teams", teams_path(@teams) %>
   </div>
-  <div class="date_time">
+  <div class="spacing date_time">
     <span class="date_time_now"></span>
   </div>
 </div>

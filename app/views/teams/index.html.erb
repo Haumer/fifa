@@ -4,19 +4,21 @@
 
       <table>
         <tr>
-          <th class="team_header">Country</th>
-          <th class="team_header">Wins</th>
-          <th class="team_header">Draws</th>
-          <th class="team_header">Losses</th>
-          <th class="team_header">Goals For</th>
-          <th class="team_header">Goals Against</th>
-          <th class="team_header">Goal Diff</th>
-          <th class="team_header">Yellow Cards</th>
-          <th class="team_header">Red Cards</th>
+          <th class="first_team_header"></th>
+          <th class="first_team_header">Country</th>
+          <th class="team_header">W</th>
+          <th class="team_header">D</th>
+          <th class="team_header">L</th>
+          <th class="team_header">GF</th>
+          <th class="team_header">GA</th>
+          <th class="team_header">GD</th>
+          <th class="team_header">YC</th>
+          <th class="team_header">RC</th>
         </tr>
-        <% sorted_teams =@teams.sort_by { |k| k["name"]} %>
+        <% sorted_teams = @teams.sort_by { |k| k["name"]} %>
         <% sorted_teams.each do |team| %>
         <tr>
+          <td class="team_flag"><img src=<%= team.photo %> alt=""></td>
           <td class="first_team_data">
           <%= link_to team_path(team) do %>
             <h6><%= team.name %></h6>
@@ -31,7 +33,7 @@
           <td class="team_data"><%= team.yellow_card %></td>
           <td class="team_data"><%= team.red_card %></td>
         </tr>
-  <% end %>
+        <% end %>
       </table>
       <br>
     </div>

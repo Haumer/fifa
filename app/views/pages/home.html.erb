@@ -11,6 +11,7 @@
         <% end %>
         <table class="home_groups">
           <tr>
+            <th class="flag"></th>
             <th id="first_head">Country</th>
             <th class="data_head">W</th>
             <th class="data_head">D</th>
@@ -19,6 +20,7 @@
           </tr>
           <% group.teams.each do |team| %>
           <tr>
+            <td class="flag_data"><img src=<%= team.photo %> alt=""></td>
             <td id="first_value"><%= team.name %></td>
             <td class="data_value"><%= team.wins %></td>
             <td class="data_value"><%= team.draws %></td>

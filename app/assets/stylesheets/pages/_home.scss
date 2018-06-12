@@ -86,6 +86,10 @@ h1 {
   margin-bottom: 15px;
 }
 
+.flag_data img {
+  height: 15px;
+}
+
 //Row border-bottom to separate home page
 .row {
   border-bottom: solid;
@@ -152,6 +156,9 @@ h1 {
 .team_header {
   width: 11%;
   text-align: center;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
 }
 
 .first_team_data {
@@ -168,4 +175,27 @@ h1 {
   border-width: 1px;
   border-color: rgb(225,225,225);
 }
+
+.team_flag img {
+  height: 40px;
+  margin-right: 5px;
+
+}
+
+.team_flag {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+.first_team_header {
+  width: 11%;
+  text-align: left;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(225,225,225);
+}
+
+
+
 
