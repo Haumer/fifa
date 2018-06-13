@@ -45,3 +45,14 @@
 .navbar_match {
   font-size: 12px;
 }
+
+.login_and_register {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spacing_login_and_register {
+  width: 50%;
+  text-align: center;
+}

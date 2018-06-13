@@ -1,6 +1,6 @@
 <% @matches = Match.all %>
 <% @groups = Group.all %>
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top col-sm-12 col-lg-12">
   <div class="spacing home_button">
     <%= link_to root_path do %>
        <%= image_tag "logo.png", :class => "navbar_logo" %>
@@ -23,10 +23,9 @@
       <% date_sorted = @matches.sort_by {|k, _v| k.date if k.date > DateTime.now} %>
     <span>Next Match: <%= date_sorted.first.home_name %> vs <%= date_sorted.first.away_name %></span>
     <br>
-    <span class="upcoming_match">
+    <span class="spacing upcoming_match">
       <%= date_sorted.first.date %>
     </span>
-
     <script>
     // Set the date we're counting down to
     var countdown_divs = document.querySelectorAll(".upcoming_match")
@@ -61,6 +60,27 @@
       }, 1000);
     });
     </script>
+  </div>
+  <div class="spacing login_and_register">
+    <div class="spacing_login_and_register login">
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <button class="btn navbar-btn">Logout</button>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+        <button class="btn navbar-btn">Login</button>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="spacing_login_and_register register">
+      <% if user_signed_in? %>
+      <% else %>
+        <%= link_to new_user_registration_path do %>
+        <button class="btn navbar-btn">Register</button>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

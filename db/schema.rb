@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180613120327) do
+ActiveRecord::Schema.define(version: 20180613131139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20180613120327) do
     t.integer "away_team_red_cards", default: 0
     t.integer "minutes_played", default: 0
     t.string "match_status", default: "Not played"
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["away_team_id"], name: "index_matches_on_away_team_id"
     t.index ["group_id"], name: "index_matches_on_group_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"
