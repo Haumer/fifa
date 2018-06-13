@@ -1,6 +1,16 @@
 // Specific CSS for your home-page
 
-//Page#home title centered
+.background_wrapper {
+  // background-image: url("https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-0.3.5&s=7c4570beb12407a372b27082e9b42908&auto=format&fit=crop&w=2850&q=80");
+  // background-position: center;
+  // background-repeat: no-repeat;
+}
+
+.background_wrapper:before {
+  opacity: 0.5;
+}
+
+
 h1 {
   text-align: center;
 }

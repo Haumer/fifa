@@ -1,112 +1,112 @@
 <%= render "shared/banner" %>
-<div class="container">
-  <div class="row">
-    <h2>Group Standings</h2>
-    <% @groups.each do |group| %>
-      <div class="group col-xs-12 col-sm-6 col-lg-3">
-        <%= link_to group_path(group) do %>
-          <div class="group-header">
-            <h4><%= group.name %></h4>
+<div class="background_wrapper">
+  <div class="container">
+    <div class="row">
+      <h2>Group Standings</h2>
+      <% @groups.each do |group| %>
+        <div class="group col-xs-12 col-sm-6 col-lg-3">
+          <%= link_to group_path(group) do %>
+            <div class="group-header">
+              <h4><%= group.name %></h4>
+            </div>
+          <% end %>
+          <table class="home_groups">
+            <tr>
+              <th class="flag"></th>
+              <th id="first_head">Country</th>
+              <th class="data_head">W</th>
+              <th class="data_head">D</th>
+              <th class="data_head">L</th>
+              <th class="data_head">Pts</th>
+            </tr>
+            <% group.teams.each do |team| %>
+            <tr class="home_groups_row">
+              <td class="flag_data"><img src=<%= team.photo %> alt=""></td>
+              <td id="first_value"><%= team.name %></td>
+              <td class="data_value"><%= team.wins %></td>
+              <td class="data_value"><%= team.draws %></td>
+              <td class="data_value"><%= team.losses %></td>
+              <td class="data_value"><%= team.points %></td>
+            </tr>
+            <% end %>
+          </table>
+
+          <div class="next_match">
+
+            <span>Next Match: <%= group.matches.first.home_name %> vs <%= group.matches.first.away_name %></span>
+            <br>
+            <span>In: </span>
+            <span class="countdown">
+              <% array = [] %>
+              <% group.matches.each_with_index do |match_data, index| %>
+                <% if DateTime.now > match_data.date %>
+                <% elsif DateTime.now < match_data.date %>
+                <% array << group.matches[index].date %>
+                <% end %>
+              <% end %>
+              <%= array.sort.first %>
+            </span>
+            <script>
+            // Set the date we're counting down to
+            var countdown_divs = document.querySelectorAll(".countdown")
+            console.log(countdown_divs)
+            countdown_divs.forEach((div) => {
+              var countDownDate = new Date(div.innerHTML).getTime();
+
+              // Update the count down every 1 second
+              var x = setInterval(function() {
+
+                // Get todays date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now an the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                div.innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                  clearInterval(x);
+                  div.innerHTML = "LIVE";
+                }
+              }, 1000);
+            });
+            </script>
           </div>
-        <% end %>
-        <table class="home_groups">
-          <tr>
-            <th class="flag"></th>
-            <th id="first_head">Country</th>
-            <th class="data_head">W</th>
-            <th class="data_head">D</th>
-            <th class="data_head">L</th>
-            <th class="data_head">Pts</th>
-          </tr>
-          <% group.teams.each do |team| %>
-          <tr class="home_groups_row">
-            <td class="flag_data"><img src=<%= team.photo %> alt=""></td>
-            <td id="first_value"><%= team.name %></td>
-            <td class="data_value"><%= team.wins %></td>
-            <td class="data_value"><%= team.draws %></td>
-            <td class="data_value"><%= team.losses %></td>
-            <td class="data_value"><%= team.points %></td>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <h2>Group Matches</h2>
+      <% @groups.each do |group| %>
+      <% sorted_matches = group.matches.sort_by { |k| k["date"]} %>
+      <div class="group col-xs-12 col-sm-3">
+        <div class="match-header">
+          <table class="home_matches">
+            <tr>
+              <th id="match_first_head"><%= group.name %></th>
+              <th class="match_data_head"></th>
+              <th id="match_last_head">Matches</th>
+            </tr>
+          <% sorted_matches.each do |match_data| %>
+          <tr class="home_match_row">
+            <td id="match_first_value"><%= match_data.home_name %></td>
+            <td class="match_data_value">vs</td>
+            <td id="match_last_value"><%= match_data.away_name %></td>
           </tr>
           <% end %>
         </table>
-
-        <div class="next_match">
-
-          <span>Next Match: <%= group.matches.first.home_name %> vs <%= group.matches.first.away_name %></span>
-          <br>
-          <span>In: </span>
-          <span class="countdown">
-            <% array = [] %>
-            <% group.matches.each_with_index do |match_data, index| %>
-              <% if DateTime.now > match_data.date %>
-              <% elsif DateTime.now < match_data.date %>
-              <% array << group.matches[index].date %>
-              <% end %>
-            <% end %>
-            <%= array.sort.first %>
-          </span>
-          <script>
-          // Set the date we're counting down to
-          var countdown_divs = document.querySelectorAll(".countdown")
-          console.log(countdown_divs)
-          countdown_divs.forEach((div) => {
-            var countDownDate = new Date(div.innerHTML).getTime();
-
-            // Update the count down every 1 second
-            var x = setInterval(function() {
-
-              // Get todays date and time
-              var now = new Date().getTime();
-
-              // Find the distance between now an the count down date
-              var distance = countDownDate - now;
-
-              // Time calculations for days, hours, minutes and seconds
-              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-              // Display the result in the element with id="demo"
-              div.innerHTML = days + "d " + hours + "h "
-              + minutes + "m " + seconds + "s ";
-
-              // If the count down is finished, write some text
-              if (distance < 0) {
-                clearInterval(x);
-                div.innerHTML = "LIVE";
-              }
-            }, 1000);
-          });
-          </script>
         </div>
       </div>
-    <% end %>
-  </div>
-  <div class="row">
-    <h2>Group Matches</h2>
-    <% @groups.each do |group| %>
-    <% sorted_matches = group.matches.sort_by { |k| k["date"]} %>
-    <div class="group col-xs-12 col-sm-3">
-      <div class="match-header">
-        <table class="home_matches">
-          <tr>
-            <th id="match_first_head"><%= group.name %></th>
-            <th class="match_data_head"></th>
-            <th id="match_last_head">Matches</th>
-          </tr>
-        <% sorted_matches.each do |match_data| %>
-        <tr class="home_match_row">
-          <td id="match_first_value"><%= match_data.home_name %></td>
-          <td class="match_data_value">vs</td>
-          <td id="match_last_value"><%= match_data.away_name %></td>
-        </tr>
-        <% end %>
-      </table>
-      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
-
-
