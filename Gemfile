@@ -10,6 +10,7 @@ gem 'rails', '5.1.6'
 gem 'redis'
 gem 'devise'
 gem 'omniauth'
+gem 'acts_as_votable', '~> 0.11.1'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
