@@ -5,7 +5,7 @@
       <div class="hype col-xs-12 col-sm-6 col-sm-offset-3">
         <div  class="hype_message">
           <% @matches_order = Match.all.order(:cached_votes_score => :desc) %>
-          <span><%= @matches_order.first.get_upvotes.size %> People are hyped for this match:</span>
+          <span><%= @matches_order.first.get_upvotes.size %> People are hyped for:</span>
           <span>
           <%= @matches_order.first.home_name %> vs <%= @matches_order.first.away_name %>
           </span>

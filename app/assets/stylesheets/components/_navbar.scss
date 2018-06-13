@@ -8,6 +8,10 @@
   flex-wrap: nowrap;
 }
 
+.home_button {
+  padding-left: 40px;
+}
+
 .navbar-white {
   background-color: white;
 }
@@ -20,8 +24,6 @@
 .navbar_logo:hover{
   opacity: 1;
 }
-
-
 
 .navbar-links {
 
@@ -54,7 +56,6 @@
   width: 50%;
   text-align: center;
 }
-
 
 .navbar-dropdown-menu {
   margin-top: 15px;
