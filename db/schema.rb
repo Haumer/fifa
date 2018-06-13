@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20180613175435) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.integer "points", default: 0
-    t.integer "integer", default: 0
     t.integer "wins", default: 0
     t.integer "draws", default: 0
     t.integer "losses", default: 0
