@@ -6,7 +6,8 @@
     <% sorted_matches.reverse.each do |match_unit| %>
     <div class="hype_content">
       <div class="vote_count">
-        <h1><%= match_unit.get_upvotes.size %></h1>
+        <div class="product-arrow"></div>
+        <h1 class="product-count"><%= match_unit.get_upvotes.size %></h1>
       </div>
       <div class="hype_match">
         <% if match_unit.match_status == "Not played" %>

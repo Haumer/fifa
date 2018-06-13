@@ -6,6 +6,7 @@
   background-color: rgba(220, 220, 220,0.9);
   transition: 0.5s background-color ease;
   flex-wrap: nowrap;
+  width: 100vw;
 }
 
 .home_button {
@@ -26,7 +27,6 @@
 }
 
 .navbar-links {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,4 +85,8 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.navbar-bars {
+
 }
