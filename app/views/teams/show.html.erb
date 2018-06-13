@@ -1,19 +1,18 @@
 <img src=<%= @team.photo %> alt="">
+<span><%= @team.name %></span>
   <table class="home_groups">
     <tr>
-      <th id="team_first_head">Country</th>
-      <th class="team_data_head">W</th>
-      <th class="team_data_head">D</th>
-      <th class="team_data_head">L</th>
-      <th class="team_data_head">Pts</th>
-      <th class="team_data_head">GF</th>
-      <th class="team_data_head">GA</th>
-      <th class="team_data_head">GD</th>
-      <th class="team_data_head">YC</th>
-      <th class="team_data_head">RC</th>
+      <th class="team_data_head">Wins</th>
+      <th class="team_data_head">Draws</th>
+      <th class="team_data_head">Losses</th>
+      <th class="team_data_head">Points</th>
+      <th class="team_data_head">Goals For</th>
+      <th class="team_data_head">Goals Against</th>
+      <th class="team_data_head">Goal Diff</th>
+      <th class="team_data_head">Yellow Cards</th>
+      <th class="team_data_head">Red Cards</th>
     </tr>
     <tr>
-      <td id="team_first_value"><%= @team.name %></td>
       <td class="team_data_value"><%= @team.wins %></td>
       <td class="team_data_value"><%= @team.draws %></td>
       <td class="team_data_value"><%= @team.losses %></td>

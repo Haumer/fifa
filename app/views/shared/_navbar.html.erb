@@ -1,20 +1,5 @@
-<!-- <script>
-  function clock() {
-  var time = new Date(),
-      hours = time.getHours(),
-      minutes = time.getMinutes(),
-      seconds = time.getSeconds();
-  document.querySelectorAll('.date_time_now')[0].innerHTML = zeroes(hours) + ":" + zeroes(minutes) + ":" + zeroes(seconds);
-    function zeroes(standIn) {
-      if (standIn < 10) {
-        standIn = '0' + standIn
-      }
-      return standIn;
-    }
-  }
-  setInterval(clock, 1000);
-</script> -->
 <% @matches = Match.all %>
+<% @groups = Group.all %>
 <div class="navbar navbar-fixed-top">
   <div class="spacing home_button">
     <%= link_to root_path do %>
@@ -35,10 +20,13 @@
         <% array_date << @matches[index].date %>
       <% end %>
     <% end %>
-    <span>Next Match: </span>
+      <% date_sorted = @matches.sort_by {|k, _v| k.date if k.date > DateTime.now} %>
+    <span>Next Match: <%= date_sorted.first.home_name %> vs <%= date_sorted.first.away_name %></span>
+    <br>
     <span class="upcoming_match">
-      <%= array_date.sort.first %>
+      <%= date_sorted.first.date %>
     </span>
+
     <script>
     // Set the date we're counting down to
     var countdown_divs = document.querySelectorAll(".upcoming_match")
