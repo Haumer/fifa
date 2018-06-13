@@ -20,7 +20,10 @@
           <% group.teams.each do |team| %>
           <tr>
             <td class="group_flag_data"><img src="<%= team.photo %>" alt=""></td>
-            <td id="group_first_data_value"><%= team.name %></td>
+            <td id="group_first_data_value"><%= link_to team_path(team.id) do %>
+              <%= team.name %>
+              <% end %>
+            </td>
             <td class="group_data_value"><%= team.wins %></td>
             <td class="group_data_value"><%= team.draws %></td>
             <td class="group_data_value"><%= team.losses %></td>
