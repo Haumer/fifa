@@ -1,8 +1,8 @@
 <h1>Hype</h1>
 
 <div class="container">
-  <% sorted_matches = @matches.sort_by { |k| k["date"]} %>
-  <% sorted_matches.each do |match_unit| %>
+  <% sorted_matches = @matches.sort_by { |k| k.get_upvotes.count} %>
+  <% sorted_matches.reverse.each do |match_unit| %>
     <div class="match">
       <%= link_to match_path(match_unit) do %>
         <%= match_unit.home_name %> vs <%= match_unit.away_name%>

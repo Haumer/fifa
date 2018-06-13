@@ -1,18 +1,18 @@
 <% @matches = Match.all %>
 <% @groups = Group.all %>
-<div class="navbar navbar-fixed-top col-sm-12 col-lg-12">
-  <div class="spacing home_button">
+<div class="navbar navbar-fixed-top col-sm-12">
+  <div class="spacing home_button col-sm-12">
     <%= link_to root_path do %>
        <%= image_tag "logo.png", :class => "navbar_logo" %>
     <% end %>
   </div>
-  <div class="spacing navbar-links">
+  <div class="spacing navbar-links col-sm-12">
     <%= link_to "Home", root_path %>
     <%= link_to "Matches", matches_path(@matches) %>
     <%= link_to "Groups", groups_path(@groups) %>
     <%= link_to "Teams", teams_path(@teams) %>
   </div>
-  <div class="spacing navbar_match">
+  <div class="spacing navbar_match col-sm-12">
     <% array_date = [] %>
     <% @matches.each_with_index do |match_data, index| %>
       <% if DateTime.now > match_data.date %>
@@ -61,7 +61,7 @@
     });
     </script>
   </div>
-  <div class="spacing login_and_register">
+  <div class="spacing login_and_register col-sm-12">
     <div class="spacing_login_and_register login">
       <% if user_signed_in? %>
         <%= link_to destroy_user_session_path, method: :delete do %>

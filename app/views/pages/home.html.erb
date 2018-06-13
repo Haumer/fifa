@@ -2,6 +2,20 @@
 <div class="background_wrapper">
   <div class="container">
     <div class="row">
+      <div class="hype col-xs-12 col-sm-6 col-sm-offset-3">
+        <div  class="hype_message">
+          <% @matches_order = Match.all.order(:cached_votes_score => :desc) %>
+          <span><%= @matches_order.first.get_upvotes.size %> People are hyped for this match:</span>
+          <span>
+          <%= @matches_order.first.home_name %> vs <%= @matches_order.first.away_name %>
+          </span>
+        </div>
+        <div class="hype_vote">
+         <%= link_to "Upvote your favourite match now!", hype_matches_path %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <h2>Group Standings</h2>
       <% @groups.each do |group| %>
         <div class="group col-xs-12 col-sm-6 col-lg-3">
