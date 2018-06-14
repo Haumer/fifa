@@ -1,4 +1,8 @@
-<h1>Vote for the match you are most hyped for!</h1>
+<% if user_signed_in? %>
+  <h1>Vote for the match you are most hyped for!</h1>
+<% else %>
+  <h1>Sign in or Register to vote!</h1>
+<% end %>
 
 <div class="container">
     <% sorted_matches = @matches.sort_by { |k| k.get_upvotes.count} %>
@@ -57,7 +61,7 @@
         <div class="vote_button">
           <%= link_to like_match_path(match_unit), class: "like", method: :put do%>
           <button type="button" class="btn btn-primary" aria-label="left-align">
-            <span badge="">Vote</span>
+            <span badge="" class="">Vote</span>
           </button>
           <% end %>
         </div>

@@ -52,7 +52,12 @@
     });
     </script>
   </div>
-  <br>
-  <%= link_to "All Matches", matches_path(@matches) %>
+  <div>
+    <div>
+      <%= link_to "All Matches", matches_path(@matches) %>
+      <br>
+      <%= link_to "Back", :back %>
+    </div>
+  </div>
 </div>
 

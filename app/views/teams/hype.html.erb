@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+  <h1>Vote for the team you are most hyped for!</h1>
+<% else %>
+  <h1>Sign in or Register to vote!</h1>
+<% end %>
+
+<div class="container">
+  <div class="row">
+  <% @teams.each do |team| %>
+    <div class="hype-team col-xs-12 col-sm-6 col-lg-4">
+      <div class="hype-team-card">
+        <span class="hype-team-name"><%= team.name %></span>
+        <img src="<%= team.photo %>" alt="">
+        <span class="hype-team-count"><%= team.get_upvotes.size %></span>
+        <div class="vote_button">
+          <%= link_to like_team_path(team), class: "like", method: :put do%>
+          <button type="button" class="btn btn-primary" aria-label="left-align">
+            <span badge="">Vote</span>
+          </button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+

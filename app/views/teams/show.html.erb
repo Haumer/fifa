@@ -1,3 +1,4 @@
+<% @groups = Group.all %>
 <div class="container">
   <div class="team-title col-xs-8">
     <img src=<%= @team.photo %> alt="">
@@ -27,6 +28,10 @@
         <td class="team_data_value"><%= @team.red_card %></td>
       </tr>
     </table>
+    <% @groups.each do |group| %>
+      <% group.matches.each do |match| %>
+      <% end %>
+    <% end %>
   <div>
     <div>
       <%= link_to "All Teams", teams_path(@teams) %>

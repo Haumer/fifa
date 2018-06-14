@@ -11,6 +11,14 @@ Rails.application.routes.draw do
     end
   end
   resources :groups
-  resources :teams
+  resources :teams do
+    collection do
+      get "hype", to: "teams#hype"
+    end
+    member do
+      put "like" => "teams#upvote"
+      put "unlike" => "teams#downvote"
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
