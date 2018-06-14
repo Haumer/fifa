@@ -1,30 +1,38 @@
-<div class="team-title col-xs-8">
-  <img src=<%= @team.photo %> alt="">
-  <span class="team-title-name"><%= @team.name %></span>
+<div class="container">
+  <div class="team-title col-xs-8">
+    <img src=<%= @team.photo %> alt="">
+    <span class="team-title-name"><%= @team.name %></span>
+  </div>
+    <table class="home_groups">
+      <tr>
+        <th class="team_data_head">Wins</th>
+        <th class="team_data_head">Draws</th>
+        <th class="team_data_head">Losses</th>
+        <th class="team_data_head">Points</th>
+        <th class="team_data_head">Goals For</th>
+        <th class="team_data_head">Goals Against</th>
+        <th class="team_data_head">Goal Diff</th>
+        <th class="team_data_head">Yellow Cards</th>
+        <th class="team_data_head">Red Cards</th>
+      </tr>
+      <tr>
+        <td class="team_data_value"><%= @team.wins %></td>
+        <td class="team_data_value"><%= @team.draws %></td>
+        <td class="team_data_value"><%= @team.losses %></td>
+        <td class="team_data_value"><%= @team.points %></td>
+        <td class="team_data_value"><%= @team.goals_for %></td>
+        <td class="team_data_value"><%= @team.goals_against %></td>
+        <td class="team_data_value"><%= @team.goals_for - @team.goals_against %></td>
+        <td class="team_data_value"><%= @team.yellow_card %></td>
+        <td class="team_data_value"><%= @team.red_card %></td>
+      </tr>
+    </table>
+  <div>
+    <div>
+      <%= link_to "All Teams", teams_path(@teams) %>
+      <br>
+      <%= link_to "Back", :back %>
+    </div>
+  </div>
 </div>
-  <table class="home_groups">
-    <tr>
-      <th class="team_data_head">Wins</th>
-      <th class="team_data_head">Draws</th>
-      <th class="team_data_head">Losses</th>
-      <th class="team_data_head">Points</th>
-      <th class="team_data_head">Goals For</th>
-      <th class="team_data_head">Goals Against</th>
-      <th class="team_data_head">Goal Diff</th>
-      <th class="team_data_head">Yellow Cards</th>
-      <th class="team_data_head">Red Cards</th>
-    </tr>
-    <tr>
-      <td class="team_data_value"><%= @team.wins %></td>
-      <td class="team_data_value"><%= @team.draws %></td>
-      <td class="team_data_value"><%= @team.losses %></td>
-      <td class="team_data_value"><%= @team.points %></td>
-      <td class="team_data_value"><%= @team.goals_for %></td>
-      <td class="team_data_value"><%= @team.goals_against %></td>
-      <td class="team_data_value"><%= @team.goals_for - @team.goals_against %></td>
-      <td class="team_data_value"><%= @team.yellow_card %></td>
-      <td class="team_data_value"><%= @team.red_card %></td>
-    </tr>
-  </table>
-<%= link_to "All Teams", teams_path(@teams) %>
 

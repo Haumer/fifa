@@ -4,7 +4,7 @@
       <table class="teams_table">
         <tr>
           <th class="first_team_header"></th>
-          <th class="first_team_header">Country</th>
+          <th class="first_team_header hidden-xs">Country</th>
           <th class="team_header">W</th>
           <th class="team_header">D</th>
           <th class="team_header">L</th>
@@ -18,7 +18,7 @@
         <% sorted_teams = @teams.sort_by { |k| k["name"]} %>
         <% sorted_teams.each do |team| %>
         <tr>
-          <td class="team_flag"><img src=<%= team.photo %> alt=""></td>
+          <td class="team_flag hidden-xs"><img src=<%= team.photo %> alt=""></td>
           <td class="first_team_data">
           <%= link_to team_path(team) do %>
             <h6><%= team.name %></h6>
