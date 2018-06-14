@@ -21,7 +21,11 @@
           <td class="team_flag hidden-xs"><img src=<%= team.photo %> alt=""></td>
           <td class="first_team_data">
           <%= link_to team_path(team) do %>
-            <h6><%= team.name %></h6>
+              <% if team.name == "Morroco" %>
+                <h6>Morocco</h6>
+              <% else %>
+              <h6><%= team.name %></h6>
+              <% end %>
           <% end %>
           </td>
           <td class="team_data"><%= team.wins %></td>
@@ -39,4 +43,5 @@
       <br>
     </div>
 </div>
+
 

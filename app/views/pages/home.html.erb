@@ -42,7 +42,11 @@
               </td>
               <td id="first_value">
                 <%= link_to team_path(team.id) do %>
-                  <%= team.name %>
+                  <% if team.name == "Morroco" %>
+                    Morocco
+                  <% else %>
+                    <%= team.name %>
+                  <% end %>
                 <% end %>
               </td>
               <td class="data_value"><%= team.wins %></td>
@@ -66,7 +70,9 @@
                 <% array << group.matches[index].date %>
                 <% end %>
               <% end %>
-              <%= array.sort.first %>
+              <% played_sorted = group.matches.sort_by { |k, _v| k.match_status == "Not played"} %>
+              <% date_sorted = played_sorted.sort_by {|k, _v| k.date if k.date > DateTime.now} %>
+              <%= date_sorted.first.date %>
             </span>
             <script>
             // Set the date we're counting down to

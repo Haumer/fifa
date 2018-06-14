@@ -72,4 +72,5 @@ data_store.each do |fixture|
   team.save
 end
 
-User.create(email: "alexander.haumer@me.com")
+puts "match status"
+

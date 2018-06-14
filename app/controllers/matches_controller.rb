@@ -16,7 +16,7 @@ class MatchesController < ApplicationController
   def upvote
     @match = Match.find(params[:id])
     @match.upvote_from current_user
-    redirect_to hype_matches_path
+    redirect_back(fallback_location: root_path)
   end
 
   def downvote
