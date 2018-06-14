@@ -4,7 +4,7 @@
 <div class="container">
 
   <% sorted_matches = @matches.sort_by { |k| k["date"]} %>
-  <% sorted_matches.each do |match_unit| %>
+  <% sorted_matches.each_with_index do |match_unit, index| %>
     <div class="match">
       <%#= team.photo.where(match_unit["home_team_id"]) %>
       <%= link_to match_path(match_unit) do %>
@@ -15,7 +15,7 @@
       <br>
       <span id="countdown" class="countdown"><%= match_unit.date %></span>
       <br>
-      <%= match_unit.date %>
+      <!-- <div class="date"><%= match_unit.date %></div> -->
     <script>
       // Set the date we're counting down to
       var countdown_divs = document.querySelectorAll(".countdown")
@@ -49,6 +49,22 @@
             }
           }, 1000);
         });
+
+      // var dates = document.querySelectorAll(".date")
+      // function localDateFromUTC(s) {
+
+      //   var x = s.split(/[-\s:tz]/i);
+      //   var d = new Date();
+
+      //   d.setUTCFullYear(x[0], x[1], x[2]);
+      //   d.setUTCHours(x[3], x[4], x[5]);
+      //   return d;
+      // }
+
+      // dates.forEach(date) {
+      //   date.innerHTML = localDateFromUTC(date.innerHTML)
+      // }
+
     </script>
     </div>
   <% end %>
