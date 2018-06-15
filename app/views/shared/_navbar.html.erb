@@ -6,10 +6,10 @@
   <div class="navbar-item home-button">
 
   </div>
-  <div class="navbar-item navbar-links hidden-xs hidden-sm">
     <%= link_to root_path do %>
        <%= image_tag "logo.png", :class => "navbar_logo" %>
     <% end %>
+  <div class="navbar-item navbar-links hidden-xs hidden-sm">
     <%= link_to "Home", root_path %>
     <%= link_to "Groups", groups_path(@groups) %>
     <%= link_to "Matches", matches_path(@matches) %>
