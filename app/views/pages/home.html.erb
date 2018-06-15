@@ -60,14 +60,21 @@
           <% sorted = group.matches.sort_by {|k, _v| k.date} %>
           <% array = [] %>
           <% sorted.each_with_index do |match_unit, index| %>
-            <% if match_unit.date > DateTime.now %>
+            <% if match_unit.date > DateTime.now.advance(:hours => +2) %>
               <% array << index %>
             <% end %>
           <% end %>
-            <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
-            <br>
-            <span>In: </span>
-            <span class="countdown"><%= sorted[array.sort.first].date %></span>
+            <% if sorted[array.sort.first].date < DateTime.now %>
+              <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
+              <br>
+              <span>Currently LIVE </span>
+              <span class="countdown"></span>
+            <% else %>
+              <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
+              <br>
+              <span>In: </span>
+              <span class="countdown"><%= sorted[array.sort.first].date %></span>
+            <% end %>
           </div>
         </div>
       <% end %>
