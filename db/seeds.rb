@@ -55,7 +55,7 @@ groups_id.each do |key, value|
       group_id: fixture["league_id"],
       away_team_id: fixture["away_id"],
       home_team_id: fixture["home_id"],
-      match_status: fixture["status"] if fixture["status"] != nil)
+      match_status: fixture["status"])
     puts "match created"
   end
 end

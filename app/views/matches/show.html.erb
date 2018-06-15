@@ -16,6 +16,7 @@
     </table>
   </div>
   <div class="show_next_match">
+    <% if @match.date > DateTime.now %>
     <span>Live in: </span> <span class="countdown"><%= @match.date %></span>
     <script>
     // Set the date we're counting down to
@@ -51,6 +52,9 @@
       }, 1000);
     });
     </script>
+    <% else %>
+    <span>Match Was played on: </span> <span class="played"><%= @match.date %></span>
+    <% end %>
   </div>
   <div>
     <div>

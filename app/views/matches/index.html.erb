@@ -2,9 +2,9 @@
 <h1>Matches</h1>
 
 <div class="container">
-
-  <% sorted_matches = @matches.sort_by { |k| k["date"] if k.match_status == "Not played"}%>
+  <% sorted_matches = @matches.sort_by { |k| k.date}%>
   <% sorted_matches.each_with_index do |match_unit, index| %>
+  <% if match_unit.date > DateTime.now %>
     <div class="match">
       <%#= team.photo.where(match_unit["home_team_id"]) %>
       <%= link_to match_path(match_unit) do %>
@@ -67,6 +67,7 @@
 
     </script>
     </div>
+    <% end %>
   <% end %>
 </div>
 

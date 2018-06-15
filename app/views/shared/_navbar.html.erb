@@ -16,15 +16,13 @@
     <%= link_to "Teams", teams_path(@teams) %>
   </div>
   <div class="navbar-item navbar_match hidden-xs hidden-sm">
-    <% array_date = [] %>
+    <% date_sorted = [] %>
     <% @matches.each_with_index do |match_data, index| %>
-      <% if DateTime.now > match_data.date %>
+      <% if DateTime.now >= match_data.date %>
       <% elsif DateTime.now < match_data.date %>
-        <% array_date << @matches[index].date %>
+        <% date_sorted = @matches.sort_by {|k, _v| k.date} %>
       <% end %>
     <% end %>
-      <% played_sorted = @matches.sort_by { |k, _v| k.match_status == "Not played"} %>
-      <% date_sorted = played_sorted.sort_by {|k, _v| k.date if k.date > DateTime.now} %>
     <span>Next Match: <%= date_sorted.first.home_name %> vs <%= date_sorted.first.away_name %></span>
     <br>
       <span>Live in:</span>

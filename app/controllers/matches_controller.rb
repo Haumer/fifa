@@ -24,5 +24,4 @@ class MatchesController < ApplicationController
     @match.upvote_from current_user
     redirect_to hype_matches_path
   end
-
 end

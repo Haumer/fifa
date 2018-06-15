@@ -56,58 +56,18 @@
             </tr>
             <% end %>
           </table>
-
           <div class="next_match">
-
-            <span>Next Match: <%= group.matches.first.home_name %> vs <%= group.matches.first.away_name %></span>
+          <% sorted = group.matches.sort_by {|k, _v| k.date} %>
+          <% array = [] %>
+          <% sorted.each_with_index do |match_unit, index| %>
+            <% if match_unit.date > DateTime.now %>
+              <% array << index %>
+            <% end %>
+          <% end %>
+            <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
             <br>
             <span>In: </span>
-            <span class="countdown">
-              <% array = [] %>
-              <% group.matches.each_with_index do |match_data, index| %>
-                <% if DateTime.now > match_data.date %>
-                <% elsif DateTime.now < match_data.date %>
-                <% array << group.matches[index].date %>
-                <% end %>
-              <% end %>
-              <% played_sorted = group.matches.sort_by { |k, _v| k.match_status == "Not played"} %>
-              <% date_sorted = played_sorted.sort_by {|k, _v| k.date if k.date > DateTime.now} %>
-              <%= date_sorted.first.date %>
-            </span>
-            <script>
-            // Set the date we're counting down to
-            var countdown_divs = document.querySelectorAll(".countdown")
-            console.log(countdown_divs)
-            countdown_divs.forEach((div) => {
-              var countDownDate = new Date(div.innerHTML).getTime();
-
-              // Update the count down every 1 second
-              var x = setInterval(function() {
-
-                // Get todays date and time
-                var now = new Date().getTime();
-
-                // Find the distance between now an the count down date
-                var distance = countDownDate - now;
-
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                // Display the result in the element with id="demo"
-                div.innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-
-                // If the count down is finished, write some text
-                if (distance < 0) {
-                  clearInterval(x);
-                  div.innerHTML = "LIVE";
-                }
-              }, 1000);
-            });
-            </script>
+            <span class="countdown"><%= sorted[array.sort.first].date %></span>
           </div>
         </div>
       <% end %>
