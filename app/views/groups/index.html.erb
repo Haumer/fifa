@@ -38,9 +38,17 @@
         </table>
 
         <div class="group_next_match">
-          <span>Next Match: <%= group.matches.first.home_name %> vs <%= group.matches.first.away_name %></span>
+          <% sorted = group.matches.sort_by {|k, _v| k.date} %>
+          <% array = [] %>
+          <% sorted.each_with_index do |match_unit, index| %>
+            <% if match_unit.date > DateTime.now %>
+              <% array << index %>
+            <% end %>
+          <% end %>
+          <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
           <br>
-          <span>In: </span> <span class="countdown"><%= group.matches.first.date %></span>
+          <span>In: </span>
+          <span class="countdown"><%= sorted[array.sort.first].date %></span>
           <script>
           // Set the date we're counting down to
           var countdown_divs = document.querySelectorAll(".countdown")

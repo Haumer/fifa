@@ -16,18 +16,18 @@
     <%= link_to "Teams", teams_path(@teams) %>
   </div>
   <div class="navbar-item navbar_match hidden-xs hidden-sm">
-    <% date_sorted = [] %>
-    <% @matches.each_with_index do |match_data, index| %>
-      <% if DateTime.now >= match_data.date %>
-      <% elsif DateTime.now < match_data.date %>
-        <% date_sorted = @matches.sort_by {|k, _v| k.date} %>
+    <% sorted = @matches.sort_by {|k, _v| k.date} %>
+    <% array = [] %>
+    <% sorted.each_with_index do |match_unit, index| %>
+      <% if match_unit.date > DateTime.now %>
+        <% array << index %>
       <% end %>
     <% end %>
-    <span>Next Match: <%= date_sorted.first.home_name %> vs <%= date_sorted.first.away_name %></span>
+    <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
     <br>
       <span>Live in:</span>
     <span class="spacing upcoming_match">
-      <%= date_sorted.first.date %>
+      <%= sorted[array.sort.first].date %>
     </span>
     <script>
     // Set the date we're counting down to
