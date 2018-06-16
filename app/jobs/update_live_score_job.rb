@@ -9,6 +9,7 @@ class UpdateLiveScoreJob < ApplicationJob
     groupstage = "#{ENV['RESULTS_URL']}"
     response = open(root + groupstage + group_id.to_s)
     response_body = response.read
+    p response
     json = JSON.parse(response_body)
 
     teams = Team.all
