@@ -65,15 +65,18 @@
             <% end %>
           <% end %>
             <% if sorted[array.sort.first].date < DateTime.now %>
+            <%= link_to match_path(sorted[array.sort.first]) do %>
               <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
               <br>
               <span>Currently LIVE </span>
-              <span class="countdown"></span>
+              <% end %>
             <% else %>
+              <%= link_to match_path(sorted[array.sort.first]) do %>
               <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
               <br>
               <span>In: </span>
               <span class="countdown"><%= sorted[array.sort.first].date %></span>
+              <% end %>
             <% end %>
           </div>
         </div>
