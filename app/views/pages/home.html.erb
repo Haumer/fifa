@@ -33,7 +33,8 @@
               <th class="data_head">L</th>
               <th class="data_head">Pts</th>
             </tr>
-            <% group.teams.each do |team| %>
+            <% wins_sorted = group.teams.sort_by {|e| e.points} %>
+            <% wins_sorted.reverse.each do |team| %>
             <tr class="home_groups_row">
               <td class="flag_data">
                 <%= link_to team_path(team.id) do %>
@@ -129,11 +130,19 @@
               <th id="match_last_head">Matches</th>
             </tr>
           <% sorted_matches.each do |match_data| %>
-          <tr class="home_match_row">
-            <td id="match_first_value"><%= match_data.home_name %></td>
-            <td class="match_data_value"><%= link_to " vs ", match_path(match_data.id)%></td>
-            <td id="match_last_value"><%= match_data.away_name %></td>
-          </tr>
+            <% if match_data.date < DateTime.now.advance(:hours => +3)%>
+            <tr class="home_match_row played">
+              <td id="match_first_value"><%= match_data.home_name %></td>
+              <td class="match_data_value"><%= link_to " vs ", match_path(match_data.id)%></td>
+              <td id="match_last_value"><%= match_data.away_name %></td>
+            </tr>
+            <% else %>
+            <tr class="home_match_row">
+              <td id="match_first_value"><%= match_data.home_name %></td>
+              <td class="match_data_value"><%= link_to " vs ", match_path(match_data.id)%></td>
+              <td id="match_last_value"><%= match_data.away_name %></td>
+            </tr>
+            <% end %>
           <% end %>
         </table>
         </div>
