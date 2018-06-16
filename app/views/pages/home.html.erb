@@ -130,8 +130,14 @@
               <th id="match_last_head">Matches</th>
             </tr>
           <% sorted_matches.each do |match_data| %>
-            <% if match_data.date < DateTime.now.advance(:hours => +3)%>
+            <% if match_data.date < DateTime.now.advance(:hours => -0)%>
             <tr class="home_match_row played">
+              <td id="match_first_value"><%= match_data.home_name %></td>
+              <td class="match_data_value"><%= link_to " vs ", match_path(match_data.id)%></td>
+              <td id="match_last_value"><%= match_data.away_name %></td>
+            </tr>
+            <% elsif match_data.date < DateTime.now.advance(:hours => +5) %>
+            <tr class="home_match_row today">
               <td id="match_first_value"><%= match_data.home_name %></td>
               <td class="match_data_value"><%= link_to " vs ", match_path(match_data.id)%></td>
               <td id="match_last_value"><%= match_data.away_name %></td>
