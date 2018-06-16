@@ -4,7 +4,7 @@ require "json"
 class UpdateLiveScoreJob < ApplicationJob
   queue_as :default
 
-  def perform(*group_id)
+  def perform(group_id)
     root = "http://livescore-api.com/api-client"
     groupstage = "#{ENV['RESULTS_URL']}"
     response = open(root + groupstage + group_id.to_s)
