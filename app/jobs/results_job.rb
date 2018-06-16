@@ -1,7 +1,7 @@
 require "open-uri"
 require "json"
 
-class UpdateLiveScoreJob < ApplicationJob
+class ResultsJob < ApplicationJob
   queue_as :default
 
   def perform
