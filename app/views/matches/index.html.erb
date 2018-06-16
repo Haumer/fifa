@@ -21,7 +21,7 @@
       var countdown_divs = document.querySelectorAll(".countdown")
       console.log(countdown_divs)
       countdown_divs.forEach((div) => {
-        var countDownDate = new Date(div.innerHTML).getTime();
+        var countDownDate = new Date(div.innerHTML).getTime() - (180 * 60 * 1000);
 
         // Update the count down every 1 second
         var x = setInterval(function() {
