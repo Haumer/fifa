@@ -17,7 +17,18 @@ class ResultsJob < ApplicationJob
       teams_group = teams.where(group_id: group_id)
 
       json["data"]["table"].each do |data|
-        team = teams_group.where(name: data["name"])
+          if data["name"] == "Morocco"
+            placeholder = "Morroco"
+            puts "placeholder is #{placeholder}"
+          elsif data["name"] == "Korea Republic"
+            placeholder = "South Korea"
+            puts "placeholder is #{placeholder}"
+          else
+            placeholder = data["name"]
+            puts "placeholder is #{placeholder}"
+          end
+          puts "im here #{placeholder}"
+        team = teams_group.where(name: placeholder)
         team.first.wins = data["won"]
         team.first.losses = data["lost"]
         team.first.draws = data["drawn"]

@@ -13,9 +13,17 @@ class UpdateLiveScoreJob < ApplicationJob
 
     teams = Team.all
     teams_group = teams.where(group_id: group_id)
+    teams_group.each {|e| puts "#{e.name}" }
 
     json["data"]["table"].each do |data|
-      team = teams_group.where(name: data["name"])
+      placeholder = ""
+      if data["name"] == "Morocco"
+        placeholder = "Morroco"
+      else
+        placeholder = data["name"]
+      end
+      puts "im here #{placeholder}"
+      team = teams_group.where(name: placeholder)
       team.first.wins = data["won"]
       team.first.losses = data["lost"]
       team.first.draws = data["drawn"]
