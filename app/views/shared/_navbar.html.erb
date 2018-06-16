@@ -18,7 +18,7 @@
     <% sorted = @matches.sort_by {|k, _v| k.date} %>
     <% array = [] %>
     <% sorted.each_with_index do |match_unit, index| %>
-      <% if match_unit.date > DateTime.now.advance(:hours => -2) %>
+      <% if match_unit.date > DateTime.now.advance(:hours => +2) %>
         <% array << index %>
       <% end %>
     <% end %>
@@ -42,7 +42,7 @@
     var countdown_divs = document.querySelectorAll(".upcoming_match")
     console.log(countdown_divs)
     countdown_divs.forEach((div) => {
-      var countDownDate = new Date(div.innerHTML).getTime();
+      var countDownDate = new Date(div.innerHTML).getTime() - (180 * 60 * 1000);
 
       // Update the count down every 1 second
       var x = setInterval(function() {
