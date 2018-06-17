@@ -15,7 +15,9 @@
       <th class="data_head">YC</th>
       <th class="data_head">RC</th>
     </tr>
-    <% @group.teams.each do |team| %>
+    <% losses_sorted = @group.teams.sort_by {|e| e.losses} %>
+    <% wins_sorted = losses_sorted.reverse.sort_by {|e| e.points} %>
+    <% wins_sorted.reverse.each do |team| %>
     <tr>
       <td class="group_flag_data hidden-xs"><img src="<%= team.photo %>" alt=""></td>
       <td id="first_value"><%= team.name %></td>

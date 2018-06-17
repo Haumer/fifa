@@ -17,7 +17,8 @@
             <th class="group_data_head">L</th>
             <th class="group_data_head">Pts</th>
           </tr>
-          <% wins_sorted = group.teams.sort_by {|e| e.points} %>
+          <% losses_sorted = group.teams.sort_by {|e| e.losses} %>
+          <% wins_sorted = losses_sorted.reverse.sort_by {|e| e.points} %>
           <% wins_sorted.reverse.each do |team| %>
           <tr>
             <td class="group_flag_data">
