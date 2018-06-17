@@ -33,7 +33,7 @@
               <th class="data_head">L</th>
               <th class="data_head">Pts</th>
             </tr>
-            <% wins_sorted = group.teams.sort_by {|e| e.points} %>
+            <% wins_sorted = group.teams.sort_by {|e| e.wins} %>
             <% wins_sorted.reverse.each do |team| %>
             <tr class="home_groups_row">
               <td class="flag_data">
