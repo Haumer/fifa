@@ -1,4 +1,11 @@
-<h1><%= @match.home_name %> vs <%= @match.away_name %></h1>
+<% teams = Team.all %>
+<div class="match-title">
+  <img src="<%team = teams.where(name: @match.home_name) %>
+  <%= team.first.photo %>" alt="" class="hidden-xs">
+  <h1><%= @match.home_name %> vs <%= @match.away_name %></h1>
+  <img src="<%team = teams.where(name: @match.away_name) %>
+  <%= team.first.photo %>" alt="" class="hidden-xs">
+</div>
 
 <div class="container">
   <div class="goals">
@@ -18,6 +25,8 @@
   <div class="show_next_match">
     <% if @match.date > DateTime.now %>
     <span>Live in: </span> <span class="countdown"><%= @match.date %></span>
+    <br>
+    <span><%= @match.date %></span>
     <script>
     // Set the date we're counting down to
     var countdown_divs = document.querySelectorAll(".countdown")

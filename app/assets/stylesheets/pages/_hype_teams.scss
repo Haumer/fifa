@@ -7,19 +7,27 @@
   margin-right: 10px;
   margin-bottom: 2px;
   margin-left: 10px;
-  border-bottom: solid;
+  border: solid;
+  border-radius: 5px;
   border-width: 1px;
   border-color: rgb(225,225,225);
 }
 
 .hype-team-card img {
-  height: 45px;
+  height: 90%;
 }
 
 .hype-team-name {
+  padding-left: 8px;
   width: 42%;
 }
 
 .hype-team-count {
   font-size: 24px;
+  margin-left: 8px;
+  margin-right: 12px;
+}
+
+.vote_button {
+  margin-right: 8px;
 }
