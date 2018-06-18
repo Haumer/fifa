@@ -18,6 +18,8 @@ class LiveResultsJob < ApplicationJob
       team.goals_against = 0
       team.draws = 0
       team.points = 0
+      team.yellow_card = 0
+      team.red_card = 0
       team.save
     end
 
@@ -47,8 +49,10 @@ class LiveResultsJob < ApplicationJob
 
       puts "im here #{placeholder_home}"
 
-
       if element["status"] != "future"
+
+        # Home team
+
         team_home = teams.where(name: placeholder_home)
         if element["winner"] == placeholder_home
           team_home.first.wins += 1
@@ -59,10 +63,25 @@ class LiveResultsJob < ApplicationJob
           team_home.first.draws += 1
           team_home.first.points += 1
         end
+
+        element["home_team_events"].each do |yellow_event|
+          if yellow_event["type_of_event"] == "yellow-card"
+            team_home.first.yellow_card += 1
+          end
+        end
+
+        element["home_team_events"].each do |red_event|
+          if red_event["type_of_event"] == "red-card"
+            team_home.first.red_card += 1
+          end
+        end
+
         team_home.first.goals_for += element["home_team"]["goals"]
         team_home.first.goals_against += element["away_team"]["goals"]
         team_home.first.save
         puts team_home.first
+
+        # Away team
 
         team_away = teams.where(name: placeholder_away)
         if element["winner"] == placeholder_away
@@ -74,6 +93,19 @@ class LiveResultsJob < ApplicationJob
           team_away.first.draws += 1
           team_away.first.points += 1
         end
+
+        element["away_team_events"].each do |yellow_event|
+          if yellow_event["type_of_event"] == "yellow-card"
+            team_away.first.yellow_card += 1
+          end
+        end
+
+        element["away_team_events"].each do |red_event|
+          if red_event["type_of_event"] == "red-card"
+            team_away.first.red_card += 1
+          end
+        end
+
         team_away.first.goals_for = element["away_team"]["goals"]
         team_away.first.goals_against = element["home_team"]["goals"]
         team_away.first.save

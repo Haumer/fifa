@@ -11,7 +11,9 @@
           </span>
         </div>
         <div class="hype_vote">
-         <%= link_to "Upvote your favourite match now!", hype_matches_path %>
+         <%= link_to hype_matches_path  do %>
+          <button class="btn btn-primary">Vote now!</button>
+         <% end %>
         </div>
       </div>
     </div>
