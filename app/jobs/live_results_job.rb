@@ -5,11 +5,21 @@ class LiveResultsJob < ApplicationJob
 
   def perform
 
-    url = "http://worldcup.sfg.io/matches/today"
+    url = "http://worldcup.sfg.io/matches"
     response = open(url)
     json = JSON.parse(response.read)
 
     teams = Team.all
+
+    teams.each do |team|
+      team.wins = 0
+      team.losses = 0
+      team.goals_for = 0
+      team.goals_against = 0
+      team.draws = 0
+      team.points = 0
+      team.save
+    end
 
     json.each do |element|
       p element
@@ -38,36 +48,37 @@ class LiveResultsJob < ApplicationJob
       puts "im here #{placeholder_home}"
 
 
+      if element["status"] != "future"
+        team_home = teams.where(name: placeholder_home)
+        if element["winner"] == placeholder_home
+          team_home.first.wins += 1
+          team_home.first.points += 3
+        elsif element["winner"] == placeholder_away
+          team_home.first.losses += 1
+        elsif element["winner"] == "Draw"
+          team_home.first.draws += 1
+          team_home.first.points += 1
+        end
+        team_home.first.goals_for += element["home_team"]["goals"]
+        team_home.first.goals_against += element["away_team"]["goals"]
+        team_home.first.save
+        puts team_home.first
 
-      team_home = teams.where(name: placeholder_home)
-      if element["winner"] == placeholder_home
-        team_home.first.wins = 1
-        team_home.first.points = 3
-      elsif element["winner"] == placeholder_away
-        team_home.first.losses = 1
-      elsif element["winner"] == "Draw"
-        team_home.first.draws = 1
-        team_home.first.points = 1
+        team_away = teams.where(name: placeholder_away)
+        if element["winner"] == placeholder_away
+          team_away.first.wins += 1
+          team_away.first.points += 3
+        elsif element["winner"] == placeholder_home
+          team_away.first.losses += 1
+        elsif element["winner"] == "Draw"
+          team_away.first.draws += 1
+          team_away.first.points += 1
+        end
+        team_away.first.goals_for = element["away_team"]["goals"]
+        team_away.first.goals_against = element["home_team"]["goals"]
+        team_away.first.save
+        puts team_away.first
       end
-      team_home.first.goals_for = element["home_team"]["goals"]
-      team_home.first.goals_against = element["away_team"]["goals"]
-      team_home.first.save
-      puts team_home.first
-
-      team_away = teams.where(name: placeholder_away)
-      if element["winner"] == placeholder_away
-        team_away.first.wins = 1
-        team_away.first.points = 3
-      elsif element["winner"] == placeholder_home
-        team_away.first.losses = 1
-      elsif element["winner"] == "Draw"
-        team_away.first.draws = 1
-        team_away.first.points = 1
-      end
-      team_away.first.goals_for = element["home_team"]["goals"]
-      team_away.first.goals_against = element["away_team"]["goals"]
-      team_away.first.save
-      puts team_away.first
     end
   end
 end
