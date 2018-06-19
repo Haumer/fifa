@@ -10,6 +10,14 @@ class UpdateAllMatchesJob < ApplicationJob
 
     matches = Match.all
 
+    morroco_home = matches.where(home_name: "Morocco")
+    morroco_home.first.home_name = "Morroco"
+    morroco_away = matches.where(away_name: "Morocco")
+    morroco_away.first.away_name = "Morroco"
+
+    morroco_away.first.save
+    morroco_home.first.save
+
 
     json.each do |element|
       if element["status"] != "future"

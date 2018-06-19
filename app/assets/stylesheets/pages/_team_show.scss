@@ -24,7 +24,8 @@
 }
 
 .team-title img {
-  height: 70px
+  height: 70px;
+  margin-top: 10px;
 }
 
 .team-title-name {
@@ -39,13 +40,46 @@
   border-color: rgb(225,225,225);
   margin-bottom: 5px;
   margin-top: 5px;
+  // font-size: 18px;
 }
 
 .team-home_groups {
   width: 100%;
-  border-bottom: solid;
-  border-width: 2px;
-  border-color: rgb(225,225,225);
+
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
+
+.home_team_show_name {
+
+}
+
+.away_team_show_name{
+
+}
+
+.team-show-table {
+  margin-top: 110px;
+  margin-bottom: 30px;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: rgb(225,225,225);
+}
+
+.team-show-date {
+  font-size: 20px;
+}
+
+td img {
+  height: 70px;
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.team-show-center {
+  width:30px;
+  text-align: center;
+}
+

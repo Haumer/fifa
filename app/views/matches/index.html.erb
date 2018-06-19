@@ -1,14 +1,19 @@
 <% @groups = Group.all %>
+<% @teams = Team.all %>
 <h1>Matches</h1>
 
 <div class="container">
   <% sorted_matches = @matches.sort_by { |k| k.date}%>
   <% sorted_matches.each_with_index do |match_unit, index| %>
+  <% team_home = @teams.where(name: match_unit.home_name) %>
+  <% team_away = @teams.where(name: match_unit.away_name) %>
   <% if match_unit.date > DateTime.now %>
     <div class="match">
       <%#= team.photo.where(match_unit["home_team_id"]) %>
       <%= link_to match_path(match_unit) do %>
+        <span><img src="<%= team_home.first.photo %> " alt="" class="match-photo hidden-xs"></span>
         <%= match_unit.home_name %> vs <%= match_unit.away_name%>
+        <span><img src="<%= team_away.first.photo %> " alt="" class="match-photo hidden-xs"></span>
       <% end %>
       <br>
       <%= match_unit.location %>

@@ -1,5 +1,6 @@
 <% @groups = Group.all %>
 <% @matches = Match.all %>
+<% @teams = Team.all %>
 <div class="container">
   <div class="team-title col-xs-8">
     <img src=<%= @team.photo %> alt="">
@@ -11,7 +12,9 @@
     <% end %>
     </span>
   </div>
-    <table class="team-home_groups">
+  <div class="team-show-table">
+  <!-- Desktop -->
+    <table class="team-home_groups hidden-xs hidden-sm">
       <tr>
         <th class="team_data_head">Wins</th>
         <th class="team_data_head">Draws</th>
@@ -35,27 +38,59 @@
         <td class="team_data_value"><%= @team.red_card %></td>
       </tr>
     </table>
+  <!-- Mobile -->
+    <table class="team-home_groups hidden-lg hidden-md">
+      <tr>
+        <th class="team_data_head">Wins</th>
+        <th class="team_data_head">Draws</th>
+        <th class="team_data_head">Losses</th>
+        <th class="team_data_head">Points</th>
+      </tr>
+      <tr>
+        <td class="team_data_value"><%= @team.wins %></td>
+        <td class="team_data_value"><%= @team.draws %></td>
+        <td class="team_data_value"><%= @team.losses %></td>
+        <td class="team_data_value"><%= @team.points %></td>
+      </tr>
+      <tr>
+        <th class="team_data_head">Goals For</th>
+        <th class="team_data_head">Goals Against</th>
+        <th class="team_data_head">Yellow Cards</th>
+        <th class="team_data_head">Red Cards</th>
+      </tr>
+      <tr>
+        <td class="team_data_value"><%= @team.goals_for %></td>
+        <td class="team_data_value"><%= @team.goals_against %></td>
+        <td class="team_data_value"><%= @team.yellow_card %></td>
+        <td class="team_data_value"><%= @team.red_card %></td>
+      </tr>
+    </table>
+  </div>
     <% team_matches = @matches.where(home_name: @team.name) %>
     <% team_matches.sort_by {|e|e.date}.each do |match_unit| %>
+    <% team_home = @teams.where(name: match_unit.home_name) %>
+    <% team_away = @teams.where(name: match_unit.away_name) %>
     <div class="team-match">
         <div class="show_location">
           <span class="show_data_value"><%= match_unit.location %></span>
         </div>
         <table class="show_match">
           <tr>
+            <td><img src="<%= team_home.first.photo %> " alt="" class="hidden-xs"></td>
             <td class="show_team_value first_value home_team_name"><%= match_unit.home_name %></td>
             <td class="show_data_value home_team_goals"><%= match_unit.home_team_goals %></td>
-            <td class="show_data_value">:</td>
+            <td class="show_data_value team-show-center">:</td>
             <td class="show_data_value away_team_goals"><%= match_unit.away_team_goals %></td>
             <td class="show_team_value last_value away_team_name"><%= match_unit.away_name %></td>
+            <td><img src="<%= team_away.first.photo %> " alt="" class="hidden-xs"></td>
           </tr>
         </table>
         <br>
         <div class="show_next_match">
           <% if match_unit.date > DateTime.now %>
-          <span>Live in: </span> <span class="countdown"><%= match_unit.date %></span>
+          <span class="team-show-date">Live in: </span> <span class="team-show-date countdown"><%= match_unit.date %></span>
           <br>
-          <span><%= match_unit.date %></span>
+          <span class="team-show-date"><%= match_unit.date %></span>
           <script>
           // Set the date we're counting down to
           var countdown_divs = document.querySelectorAll(".countdown")
@@ -91,32 +126,38 @@
           });
           </script>
           <% else %>
-          <span>Match Was played on: </span> <span class="show-played"><%= match_unit.date %></span>
+          <span class="team-show-date">Match Was played on: </span>
+          <br>
+          <span class="show-played team-show-date"><%= match_unit.date %></span>
           <% end %>
         </div>
       </div>
     <% end %>
     <% team_matches = @matches.where(away_name: @team.name) %>
     <% team_matches.sort_by {|e|e.date}.each do |match_unit| %>
+    <% team_home = @teams.where(name: match_unit.home_name) %>
+    <% team_away = @teams.where(name: match_unit.away_name) %>
     <div class="team-match">
       <div class="show_location">
         <span class="show_data_value"><%= match_unit.location %></span>
       </div>
       <table class="show_match">
         <tr>
+          <td><img src="<%= team_home.first.photo %> " alt="" class="hidden-xs"></td>
           <td class="show_team_value first_value home_team_name"><%= match_unit.home_name %></td>
           <td class="show_data_value home_team_goals"><%= match_unit.home_team_goals %></td>
-          <td class="show_data_value">:</td>
+          <td class="show_data_value team-show-center">:</td>
           <td class="show_data_value away_team_goals"><%= match_unit.away_team_goals %></td>
           <td class="show_team_value last_value away_team_name"><%= match_unit.away_name %></td>
+          <td><img src="<%= team_away.first.photo %> " alt="" class="hidden-xs"></td>
         </tr>
       </table>
       <br>
       <div class="show_next_match">
         <% if match_unit.date > DateTime.now %>
-        <span>Live in: </span> <span class="countdown"><%= match_unit.date %></span>
+        <span class="team-show-date">Live in: </span> <span class="team-show-date countdown"><%= match_unit.date %></span>
         <br>
-        <span><%= match_unit.date %></span>
+        <span class="team-show-date"><%= match_unit.date %></span>
         <script>
         // Set the date we're counting down to
         var countdown_divs = document.querySelectorAll(".countdown")
@@ -152,7 +193,9 @@
         });
         </script>
         <% else %>
-        <span>Match Was played on: </span> <span class="show-played"><%= match_unit.date %></span>
+        <span class="team-show-date">Match Was played on: </span>
+        <br>
+        <span class="show-played team-show-date"><%= match_unit.date %></span>
         <% end %>
       </div>
     </div>
