@@ -9,8 +9,8 @@
   <% @teams.each do |team| %>
     <div class="hype-team col-xs-12 col-sm-6 col-lg-4">
       <div class="hype-team-card">
-        <span class="hype-team-name"><%= team.name %></span>
         <img src="<%= team.photo %>" alt="">
+        <span class="hype-team-name"><%= team.name %></span>
         <span class="hype-team-count"><%= team.get_upvotes.size %></span>
         <div class="vote_button">
           <%= link_to like_team_path(team), class: "like", method: :put do%>

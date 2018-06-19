@@ -185,3 +185,20 @@ td a:hover {
   background-color: rgb(46, 204, 113);
 }
 
+.group {
+  transition: ease-out 0.1s;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  padding-bottom: 2px;
+  padding-top: 4px;
+}
+
+.group:hover {
+  // box-shadow: 0 3px 6px 1px rgba(0,0,0,0.3);
+  // transition: ease-in 0.1s;
+}
+
+.group a:hover {
+  text-decoration: none;
+}
+
