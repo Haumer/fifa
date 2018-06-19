@@ -47,7 +47,7 @@ class UpdateAllMatchesJob < ApplicationJob
 
         element["home_team_events"].each do |red_event|
           if red_event["type_of_event"] == "red-card"
-            match_unit.first.home_tean_red_cards += 1
+            match_unit.first.home_team_red_cards += 1
           end
         end
 
@@ -60,7 +60,7 @@ class UpdateAllMatchesJob < ApplicationJob
 
         element["away_team_events"].each do |red_event|
           if red_event["type_of_event"] == "red-card"
-            match_unit.first.away_tean_red_cards += 1
+            match_unit.first.away_team_red_cards += 1
           end
         end
 
