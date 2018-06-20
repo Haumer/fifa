@@ -18,6 +18,13 @@ class UpdateAllMatchesJob < ApplicationJob
     # morroco_away.first.save
     # morroco_home.first.save
 
+    # matches.each do |e|
+    #   e.goals_for = 0
+    #   e.goals_against = 0
+    # end
+
+
+
 
     json.each do |element|
       if element["status"] != "future"
@@ -48,7 +55,7 @@ class UpdateAllMatchesJob < ApplicationJob
 
         p match_unit
 
-        p match_unit.first.home_team_goals = element["home_team"]["goals"]
+        p match_unit.first.home_team_goals += element["home_team"]["goals"]
         element["home_team_events"].each do |yellow_event|
           if yellow_event["type_of_event"] == "yellow-card"
             match_unit.first.home_team_yellow_cards += 1
@@ -61,7 +68,7 @@ class UpdateAllMatchesJob < ApplicationJob
           end
         end
 
-        p match_unit.first.away_team_goals = element["away_team"]["goals"]
+        p match_unit.first.away_team_goals += element["away_team"]["goals"]
         element["away_team_events"].each do |yellow_event|
           if yellow_event["type_of_event"] == "yellow-card"
             match_unit.first.away_team_yellow_cards += 1

@@ -106,8 +106,8 @@ class LiveResultsJob < ApplicationJob
           end
         end
 
-        team_away.first.goals_for = element["away_team"]["goals"]
-        team_away.first.goals_against = element["home_team"]["goals"]
+        team_away.first.goals_for += element["away_team"]["goals"]
+        team_away.first.goals_against += element["home_team"]["goals"]
         team_away.first.save
         puts team_away.first
       end
