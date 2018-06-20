@@ -25,6 +25,7 @@ class UpdateAllMatchesJob < ApplicationJob
       e.away_team_yellow_cards = 0
       e.home_team_red_cards = 0
       e.away_team_red_cards = 0
+      e.save
     end
 
     json.each do |element|
