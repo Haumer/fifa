@@ -85,11 +85,9 @@
             <td><img src="<%= team_away.first.photo %> " alt="" class="hidden-xs"></td>
           </tr>
         </table>
-        <br>
         <div class="show_next_match">
           <% if match_unit.date > DateTime.now %>
           <span class="team-show-date">Live in: </span> <span class="team-show-date countdown"><%= match_unit.date %></span>
-          <br>
           <span class="team-show-date"><%= match_unit.date %></span>
           <script>
           // Set the date we're counting down to
@@ -152,11 +150,9 @@
           <td><img src="<%= team_away.first.photo %> " alt="" class="hidden-xs"></td>
         </tr>
       </table>
-      <br>
       <div class="show_next_match">
         <% if match_unit.date > DateTime.now %>
         <span class="team-show-date">Live in: </span> <span class="team-show-date countdown"><%= match_unit.date %></span>
-        <br>
         <span class="team-show-date"><%= match_unit.date %></span>
         <script>
         // Set the date we're counting down to

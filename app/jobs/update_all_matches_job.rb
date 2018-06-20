@@ -10,13 +10,13 @@ class UpdateAllMatchesJob < ApplicationJob
 
     matches = Match.all
 
-    morroco_home = matches.where(home_name: "Morocco")
-    morroco_home.first.home_name = "Morroco"
-    morroco_away = matches.where(away_name: "Morocco")
-    morroco_away.first.away_name = "Morroco"
+    # morroco_home = matches.where(home_name: "Morocco")
+    # morroco_home.first.home_name = "Morroco"
+    # morroco_away = matches.where(away_name: "Morocco")
+    # morroco_away.first.away_name = "Morroco"
 
-    morroco_away.first.save
-    morroco_home.first.save
+    # morroco_away.first.save
+    # morroco_home.first.save
 
 
     json.each do |element|
@@ -46,7 +46,9 @@ class UpdateAllMatchesJob < ApplicationJob
 
         match_unit = matches.where(home_name: placeholder_home).where(away_name: placeholder_away)
 
-        match_unit.first.home_team_goals = element["home_team"]["goals"]
+        p match_unit
+
+        p match_unit.first.home_team_goals = element["home_team"]["goals"]
         element["home_team_events"].each do |yellow_event|
           if yellow_event["type_of_event"] == "yellow-card"
             match_unit.first.home_team_yellow_cards += 1
@@ -59,7 +61,7 @@ class UpdateAllMatchesJob < ApplicationJob
           end
         end
 
-        match_unit.first.away_team_goals = element["away_team"]["goals"]
+        p match_unit.first.away_team_goals = element["away_team"]["goals"]
         element["away_team_events"].each do |yellow_event|
           if yellow_event["type_of_event"] == "yellow-card"
             match_unit.first.away_team_yellow_cards += 1
