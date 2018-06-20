@@ -18,13 +18,14 @@ class UpdateAllMatchesJob < ApplicationJob
     # morroco_away.first.save
     # morroco_home.first.save
 
-    # matches.each do |e|
-    #   e.goals_for = 0
-    #   e.goals_against = 0
-    # end
-
-
-
+    matches.each do |e|
+      e.home_team_goals = 0
+      e.away_team_goals = 0
+      e.home_team_yellow_cards = 0
+      e.away_team_yellow_cards = 0
+      e.home_team_red_cards = 0
+      e.away_team_red_cards = 0
+    end
 
     json.each do |element|
       if element["status"] != "future"
