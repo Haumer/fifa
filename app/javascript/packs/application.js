@@ -1,2 +1,2 @@
 import "bootstrap";
-import { navbarChangeColor } from "../components/navbar";
+import "../components/navbar";

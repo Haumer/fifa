@@ -11,9 +11,7 @@
     <meta property="og:site_name" content="<%= meta_title %>" />
 
     <title>Fifa World Cup</title>
-    <link rel="icon"
-      type="image/png"
-      href="http://www.free-icons-download.net/images/burning--football-icon-71774.png">
+    <%= favicon_link_tag "logo.png", rel: "icon", type: "image/png" %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
