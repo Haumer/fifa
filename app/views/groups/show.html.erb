@@ -19,8 +19,20 @@
     <% wins_sorted = losses_sorted.reverse.sort_by {|e| e.points} %>
     <% wins_sorted.reverse.each do |team| %>
     <tr>
-      <td class="group_flag_data hidden-xs"><img src="<%= team.photo %>" alt=""></td>
-      <td id="first_value"><%= team.name %></td>
+      <td class="group_flag_data hidden-xs">
+        <%= link_to team_path(team.id) do %>
+          <img src="<%= team.photo %>" alt="">
+        <% end %>
+      </td>
+      <td id="first_value">
+        <%= link_to team_path(team.id) do %>
+          <% if team.name == "Morroco" %>
+             Morocco
+          <% else %>
+            <%= team.name %>
+          <% end %>
+        <% end %>
+      </td>
       <td class="data_value"><%= team.wins %></td>
       <td class="data_value"><%= team.draws %></td>
       <td class="data_value"><%= team.losses %></td>
