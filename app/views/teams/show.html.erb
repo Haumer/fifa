@@ -82,7 +82,7 @@
             <td class="show_data_value team-show-center">:</td>
             <td class="show_data_value away_team_goals"><%= match_unit.away_team_goals %></td>
             <td class="show_team_value last_value away_team_name">
-              <%= link_to team_path(match_unit.away_name) do %>
+              <%= link_to team_path(match_unit.away_team_id) do %>
                 <%= match_unit.away_name %>
               <% end %>
               </td>
@@ -147,7 +147,7 @@
         <tr>
           <td><img src="<%= team_home.first.photo %> " alt="" class="hidden-xs"></td>
           <td class="show_team_value first_value home_team_name">
-            <%= link_to team_path(match_unit.home_name) do %>
+            <%= link_to team_path(match_unit.home_team_id)do %>
               <%= match_unit.home_name %>
             <% end %>
             </td>
