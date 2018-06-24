@@ -81,7 +81,11 @@
             <td class="show_data_value home_team_goals"><%= match_unit.home_team_goals %></td>
             <td class="show_data_value team-show-center">:</td>
             <td class="show_data_value away_team_goals"><%= match_unit.away_team_goals %></td>
-            <td class="show_team_value last_value away_team_name"><%= match_unit.away_name %></td>
+            <td class="show_team_value last_value away_team_name">
+              <%= link_to team_path(match_unit.away_name) do %>
+                <%= match_unit.away_name %>
+              <% end %>
+              </td>
             <td><img src="<%= team_away.first.photo %> " alt="" class="hidden-xs"></td>
           </tr>
         </table>
@@ -142,7 +146,11 @@
       <table class="show_match">
         <tr>
           <td><img src="<%= team_home.first.photo %> " alt="" class="hidden-xs"></td>
-          <td class="show_team_value first_value home_team_name"><%= match_unit.home_name %></td>
+          <td class="show_team_value first_value home_team_name">
+            <%= link_to team_path(match_unit.home_name) do %>
+              <%= match_unit.home_name %>
+            <% end %>
+            </td>
           <td class="show_data_value home_team_goals"><%= match_unit.home_team_goals %></td>
           <td class="show_data_value team-show-center">:</td>
           <td class="show_data_value away_team_goals"><%= match_unit.away_team_goals %></td>
