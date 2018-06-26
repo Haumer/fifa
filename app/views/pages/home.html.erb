@@ -64,33 +64,37 @@
             <% end %>
           </table>
           <div class="next_match">
-          <% sorted = group.matches.sort_by {|k, _v| k.date} %>
           <% array = [] %>
+          <% sorted = group.matches.sort_by {|k, _v| k.date} %>
           <% sorted.each_with_index do |match_unit, index| %>
-            <% if match_unit.date > DateTime.now.advance(:hours => +2) %>
+            <% if match_unit.date > DateTime.now %>
               <% array << index %>
             <% end %>
           <% end %>
-            <% if sorted[array.sort.first].date < DateTime.now %>
-            <%= link_to match_path(sorted[array.sort.first]) do %>
-              <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
-              <br>
-              <span>Currently LIVE </span>
-              <% end %>
+            <% if array.length == 0 %>
+              <span>All Matches have been played</span>
             <% else %>
+              <% if sorted[array.first].date < DateTime.now %>
               <%= link_to match_path(sorted[array.sort.first]) do %>
-              <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
-              <br>
-              <span>In: </span>
-                <% if sorted[array.sort.first].location.split(",").last.strip == "Saint Petersburg" %>
-                  <span id="countdown" class="countdown-St-Petersburg"><%= sorted[array.sort.first].date %></span>
-                <% elsif sorted[array.sort.first].location.split(",").last.strip == "Nizhny Novgorod" %>
-                  <span id="countdown" class="countdown-Nizhny-Novgorod"><%= sorted[array.sort.first].date %></span>
-                <% else %>
-                  <span id="countdown" class="countdown-<%= sorted[array.sort.first].location.split(",").last.strip %>"><%= sorted[array.sort.first].date %></span>
+                <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
+                <br>
+                <span>Currently LIVE </span>
+                <% end %>
+              <% else %>
+                <%= link_to match_path(sorted[array.sort.first]) do %>
+                <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
+                <br>
+                <span>In: </span>
+                  <% if sorted[array.sort.first].location.split(",").last.strip == "Saint Petersburg" %>
+                    <span id="countdown" class="countdown-St-Petersburg"><%= sorted[array.sort.first].date %></span>
+                  <% elsif sorted[array.sort.first].location.split(",").last.strip == "Nizhny Novgorod" %>
+                    <span id="countdown" class="countdown-Nizhny-Novgorod"><%= sorted[array.sort.first].date %></span>
+                  <% else %>
+                    <span id="countdown" class="countdown-<%= sorted[array.sort.first].location.split(",").last.strip %>"><%= sorted[array.sort.first].date %></span>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
+
               <script>
               var countdown_divs = document.querySelectorAll(".countdown-<%= sorted[array.sort.first].location.split(",").last.strip %>")
               console.log(countdown_divs)
@@ -201,6 +205,7 @@
               }, 1000);
             });
             </script>
+            <% end %>
           </div>
         </div>
       <% end %>
