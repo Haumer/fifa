@@ -51,6 +51,9 @@
               <% array << index %>
             <% end %>
           <% end %>
+          <% if array.length == 0 %>
+          <span>All Matches for this Group have been played</span>
+          <% else %>
           <span>Next Match: <%= sorted[array.sort.first].home_name %> vs <%= sorted[array.sort.first].away_name %></span>
           <br>
           <span>In: </span>
@@ -171,6 +174,7 @@
       }, 1000);
     });
     </script>
+    <% end %>
         </div>
       </div>
     <% end %>
