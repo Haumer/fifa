@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       put "unlike" => "teams#downvote"
     end
   end
+  resources :pages do
+    collection do
+      get "ro16"
+    end
+  end
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'

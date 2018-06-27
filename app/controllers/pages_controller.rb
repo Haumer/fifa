@@ -5,6 +5,11 @@ class PagesController < ApplicationController
 
   end
 
+  def ro16
+    @groups = Group.all
+    @teams = Team.all
+  end
+
   def faq
 
   end

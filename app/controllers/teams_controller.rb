@@ -15,13 +15,13 @@ class TeamsController < ApplicationController
   def upvote
     @team = Team.find(params[:id])
     @team.upvote_from current_user
-    redirect_to hype_teams_path
+    redirect_back fallback_location: root_path
   end
 
   def downvote
     @team = Team.find(params[:id])
     @team.upvote_from current_user
-    redirect_to hype_teams_path
+    redirect_to fallback_location: root_path
   end
 
 end

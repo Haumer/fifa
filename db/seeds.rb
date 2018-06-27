@@ -7,7 +7,6 @@ data_store = [{"home_team"=>{"name"=>{"tri"=>"RUS", "flag"=>"https://fsprdcdnpub
 User.all.each do |g|
   g.destroy
 end
-
 Group.all.each do |g|
   g.destroy
 end
