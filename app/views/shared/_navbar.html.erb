@@ -22,6 +22,8 @@
         <% array << index %>
       <% end %>
     <% end %>
+    <% if array.length == 0 %>
+    <% else %>
     <div class="upcoming-match-div">
       <% if sorted[array.sort.first].date > DateTime.now %>
         <%= link_to match_path(sorted[array.sort.first]) do %>
@@ -147,6 +149,7 @@
       }, 1000);
     });
     </script>
+    <% end %>
   </div>
   <div class="navbar-item login_and_register hidden-xs hidden-sm">
     <div class="spacing_login_and_register login">
