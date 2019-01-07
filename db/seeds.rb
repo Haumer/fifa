@@ -17,9 +17,16 @@ Match.all.each do |g|
   g.destroy
 end
 
-root = "http://livescore-api.com/api-client"
-groupstage = "#{ENV['LIVESCORES_URL']}"
-groups_id = { 793 => "Group A", 794 => "Group B", 795 => "Group C", 796 => "Group D", 797 => "Group E", 798 => "Group F", 799 => "Group G", 800 => "Group H" }
+# root = "http://livescore-api.com/api-client"
+# groupstage = "#{ENV['LIVESCORES_URL']}"
+
+url = "https://worldcup.sfg.io/matches"
+response = open(url)
+json_matches = JSON.parse(response.read)
+url = "https://worldcup.sfg.io/teams/"
+response = open(url)
+json_teams = JSON.parse(response.read)
+groups_id = { 793 => "Group A", 794 => "Group B", 795 => "Group C", 796 => "Group D", 797 => "Group E", 798 => "Group F", 799 => "Group G", 800 => "Group H", 16 => "Round of 16"}
 
 groups_id.each do |id, name |
   created = Group.create(id: id, name: name)
@@ -27,15 +34,15 @@ groups_id.each do |id, name |
 end
 stadiums = { "Luzhniki Stadium, Moscow" => 2, "Spartak Stadium, Moscow" => 2, "Nizhny Novgorod Stadium, Nizhny Novgorod" => 2, "Mordovia Arena, Saransk" => 2, "Kazan Arena, Kazan" => 2, "Samara Arena, Samara" => 3, "Ekaterinburg Arena, Ekaterinburg" => 4, "St Petersburg Stadium, St Petersburg" => 2, "Kaliningrad Stadium, Kaliningrad" => 1, "Volgograd Arena, Volgograd" => 2, "Rostov Arena, Rostov-on-Don" => 2, "Fisht Stadium, Sochi" => 2 }
 groups_id.each do |key, value|
-  url = root + groupstage + key.to_s
-  response = open(url)
-  response_body = response.read
-  json = JSON.parse(response_body)
-  puts json["data"]["fixtures"]
+  # url = root + groupstage + key.to_s
+  # response = open(url)
+  # response_body = response.read
+  # json = JSON.parse(response_body)
+  # puts json["data"]["fixtures"]
 
-  json["data"]["fixtures"].each do |fixture|
+  json_teams.each do |fixture|
     begin
-      Team.create(id: fixture["home_id"], name: fixture["home_name"], group_id: fixture["league_id"])
+      Team.create(id: fixture["id"], name: fixture["country"], group_id: key)
       puts "team created"
     rescue ActiveRecord::RecordNotUnique
       puts "I get here"
@@ -43,15 +50,14 @@ groups_id.each do |key, value|
       puts "bugger"
     end
   end
-  json["data"]["fixtures"].each do |fixture|
-    Match.create(id: fixture["id"],
-      date_string: fixture["date"],
-      time: fixture["time"],
-      round: fixture["round"],
-      home_name: fixture["home_name"],
-      away_name: fixture["away_name"],
+  json_matches.each do |fixture|
+    Match.create(
+      date_string: fixture["datetime"],
+      round: fixture["stage_name"],
+      home_name: fixture["home_team_country"],
+      away_name: fixture["away_team_country"],
       location: fixture["location"],
-      group_id: fixture["league_id"],
+      group_id: key,
       away_team_id: fixture["away_id"],
       home_team_id: fixture["home_id"],
       match_status: fixture["status"])
@@ -63,13 +69,29 @@ puts "adding flags"
 
 data_store.each do |fixture|
   f = Match.where("home_name = ? and away_name = ?", fixture["home_team"]["name"]["full"], fixture["visitant_team"]["name"]["full"]).first
-  f.date = fixture["start_time"]
-  puts f.date
-  f.save
+
   team = Team.where(name: fixture["home_team"]["name"]["full"]).first
   team.photo = fixture["home_team"]["name"]["flag"]
   puts team.photo
   team.save
 end
 
+# second seed / Knock-out stage
+
+url = "https://worldcup.sfg.io/matches"
+respone = open(url)
+json = JSON.parse(response.read)
+
+json.each do |element|
+  if element["stage_name"] == "Round of 16"
+    Match.create(
+      home_name: json["home_team_country"],
+      away_name: json["away_team_country"],
+      round: json["stage_name"],
+      group_id: "Round of 16",
+      location: json["location"],
+      date_string: json["datetime"],
+      match_status: json["status"])
+  end
+end
 
